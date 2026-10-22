@@ -142,7 +142,7 @@ Gladys. Les données sont le temps réel des opérateurs quand ils le publient, 
 - Développée sans vivre en Norvège, contre la vraie API d'Entur : vos retours sont les bienvenus.
 - Les noms de fonctionnalités sont fixés à la création de l'appareil.
 - Les messages de trafic sont en norvégien et souvent en anglais, jamais traduits.
-- Les départs sont lus sur les 24 prochaines heures : 20 par arrêt, 60 quand l'arrêt est filtré.
+- Les départs sont lus sur les 24 prochaines heures : les 40 prochains des lignes et du mode choisis (filtrés par Entur), 100 avec un filtre de direction. Dans un grand pôle sans filtre, 40 départs peuvent ne couvrir qu'une demi-heure.
 
 ## Crédits
 

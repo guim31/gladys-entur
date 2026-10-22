@@ -138,7 +138,7 @@ operators' real time when they publish it, else their timetable.
 - Developed without living in Norway, against the real Entur API: feedback welcome.
 - Feature names are set when the device is created.
 - Traffic messages are in Norwegian and often English, never translated.
-- Departures are read for the next 24 hours: 20 per stop, 60 when the stop is filtered.
+- Departures are read for the next 24 hours: the next 40 of the stop's lines and mode (Entur filters them), 100 with a direction filter. At a busy hub without filter, 40 departures may cover only half an hour.
 
 ## Credits
 

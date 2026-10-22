@@ -15,7 +15,8 @@ import {
   DEVICE_FEATURE_TYPES,
   DEVICE_FEATURE_UNITS,
 } from '@gladysassistant/integration-sdk';
-import { running, situationsOf } from './departures.js';
+import { createHash } from 'node:crypto';
+import { fold, running, situationsOf } from './departures.js';
 import { NAMES, TEXT, modeName, say } from './messages.js';
 
 export const STOP_TYPE = 'stop';
@@ -31,10 +32,7 @@ export function clip(text, max) {
 }
 
 const slug = (text) =>
-  String(text ?? '')
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
+  fold(text)
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
@@ -50,7 +48,11 @@ export function watchKey(watch) {
     ...(watch.direction ? ['to', slug(watch.direction)] : []),
     ...(watch.mode ? [slug(watch.mode)] : []),
   ].filter(Boolean);
-  return [number, ...parts].join('-').slice(0, 80);
+  const key = [number, ...parts].join('-');
+  // Too long: cut, with a short hash of the whole so two keys never meet.
+  return key.length <= 80
+    ? key
+    : `${key.slice(0, 71)}-${createHash('sha1').update(key).digest('hex').slice(0, 8)}`;
 }
 
 /** "Oslo S (L1, L2 · → Ski · Train)": the name of a watch. */
@@ -94,6 +96,7 @@ export function buildStopDevice(gladys, watch, language) {
       { name: 'stop_id', value: watch.id },
       { name: 'stop_name', value: watch.name },
       { name: 'lines', value: (watch.lines ?? []).join(',') },
+      { name: 'line_ids', value: (watch.lineIds ?? []).join(',') },
       { name: 'direction', value: watch.direction ?? '' },
       { name: 'mode', value: watch.mode ?? '' },
     ],

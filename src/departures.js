@@ -97,6 +97,19 @@ export function applyFilters(departures, watch) {
   );
 }
 
+/**
+ * The departures of an earlier read, as of `now`: minutes counted again from
+ * the expected time, the ones gone dropped. A board read a minute ago (or
+ * before an outage of Entur) never shows a frozen countdown.
+ */
+export const aged = (departures, now) =>
+  departures
+    .filter((departure) => departure.expected >= now - 60000)
+    .map((departure) => ({
+      ...departure,
+      minutes: Math.max(0, Math.floor((departure.expected - now) / 60000)),
+    }));
+
 /** The departures that will run: not cancelled. */
 export const running = (departures) => departures.filter((departure) => !departure.cancelled);
 

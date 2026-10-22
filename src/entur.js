@@ -13,10 +13,12 @@ export const GEOCODER_URL = 'https://api.entur.io/geocoder/v1/autocomplete';
 export const CLIENT_NAME = 'guim31-gladys';
 
 const TIMEOUT_MS = 15000;
-// Departures read per stop: enough for the widget and the triggers; more when
-// a filter (line, direction, mode) keeps only part of them.
-export const DEPARTURES_UNFILTERED = 20;
-export const DEPARTURES_FILTERED = 60;
+// Departures read per watched stop. The lines and the mode are filtered by
+// Entur (whiteListed), the direction only here: a direction filter reads more.
+export const DEPARTURES = 40;
+export const DEPARTURES_DIRECTION = 100;
+export const MODES = ['rail', 'metro', 'tram', 'bus', 'coach', 'water'];
+const LINE_ID = /^[A-Za-z]+:Line:[\w.:-]+$/;
 // 24 hours: a countdown at its maximum means "nothing in the next 24 hours".
 const TIME_RANGE_SECONDS = 86400;
 
@@ -76,53 +78,67 @@ export class Entur {
     }
   }
 
-  async graphql(query, variables = {}) {
+  /** `partial`: an error on one alias keeps the others (data and errors together). */
+  async graphql(query, variables = {}, { partial = false } = {}) {
     const body = await this.request(JOURNEY_PLANNER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query, variables }),
     });
-    if (Array.isArray(body?.errors) && body.errors.length > 0) {
+    const hasData = body?.data && Object.values(body.data).some((value) => value !== null);
+    if (Array.isArray(body?.errors) && body.errors.length > 0 && !(partial && hasData)) {
       throw new EnturError(`Entur: ${String(body.errors[0]?.message ?? 'error').slice(0, 160)}`);
     }
     return body?.data ?? {};
   }
 
   /**
-   * The upcoming calls of several stop places, in one request.
-   * @param {{ id: string, filtered: boolean }[]} places
-   * @returns {Promise<Map<string, { name: string, calls: object[] } | null>>} by stop place id
+   * The upcoming calls of several watched stops, in one request: one alias
+   * per watch, with its own line and mode filters.
+   * @param {{ id: string, lineIds?: string[], mode?: string, direction?: string }[]} watches
+   * @returns {Promise<({ name: string, calls: object[] } | null)[]>} in the order of `watches`
    */
-  async departures(places) {
-    const unique = [...new Map(places.map((place) => [place.id, place])).values()].filter((place) =>
-      STOP_PLACE_ID.test(place.id),
-    );
-    const result = new Map();
-    if (unique.length === 0) {
-      return result;
-    }
-    // The ids are checked against STOP_PLACE_ID above: safe to inline.
-    const aliases = unique.map(
-      (place, index) => `s${index}: stopPlace(id: ${JSON.stringify(place.id)}) {
+  async departures(watches) {
+    const aliases = [];
+    watches.forEach((watch, index) => {
+      // Every value inlined below is checked first: no injection possible.
+      if (!STOP_PLACE_ID.test(watch.id)) {
+        return;
+      }
+      const args = [
+        `numberOfDepartures: ${watch.direction ? DEPARTURES_DIRECTION : DEPARTURES}`,
+        `timeRange: ${TIME_RANGE_SECONDS}`,
+        'includeCancelledTrips: true',
+      ];
+      const lineIds = (watch.lineIds ?? []).filter((id) => LINE_ID.test(id));
+      if (lineIds.length > 0) {
+        args.push(`whiteListed: { lines: ${JSON.stringify(lineIds)} }`);
+      }
+      if (MODES.includes(watch.mode)) {
+        args.push(`whiteListedModes: [${watch.mode}]`);
+      }
+      aliases.push(`s${index}: stopPlace(id: ${JSON.stringify(watch.id)}) {
         id name
-        estimatedCalls(numberOfDepartures: ${place.filtered ? DEPARTURES_FILTERED : DEPARTURES_UNFILTERED}, timeRange: ${TIME_RANGE_SECONDS}, includeCancelledTrips: true) { ${CALL_FIELDS} }
-      }`,
-    );
-    const data = await this.graphql(`{ ${aliases.join('\n')} }`);
-    unique.forEach((place, index) => {
-      const stop = data[`s${index}`];
-      result.set(place.id, stop ? { name: stop.name, calls: stop.estimatedCalls ?? [] } : null);
+        estimatedCalls(${args.join(', ')}) { ${CALL_FIELDS} }
+      }`);
     });
-    return result;
+    if (aliases.length === 0) {
+      return watches.map(() => null);
+    }
+    const data = await this.graphql(`{ ${aliases.join('\n')} }`, {}, { partial: true });
+    return watches.map((watch, index) => {
+      const stop = data[`s${index}`];
+      return stop ? { name: stop.name, calls: stop.estimatedCalls ?? [] } : null;
+    });
   }
 
   /**
    * A stop place and the lines it serves, or null when the id is unknown.
-   * @returns {Promise<{ id: string, name: string, modes: string[], lines: { code: string, mode: string }[] } | null>}
+   * @returns {Promise<{ id: string, name: string, modes: string[], lines: { code: string, mode: string, ids: string[] }[] } | null>}
    */
   async stopPlace(id) {
     const data = await this.graphql(
-      `query ($id: String!) { stopPlace(id: $id) { id name transportMode quays { lines { publicCode transportMode } } } }`,
+      `query ($id: String!) { stopPlace(id: $id) { id name transportMode quays { lines { id publicCode transportMode } } } }`,
       { id },
     );
     const stop = data.stopPlace;
@@ -133,7 +149,16 @@ export class Entur {
     for (const quay of stop.quays ?? []) {
       for (const line of quay?.lines ?? []) {
         if (line?.publicCode) {
-          lines.set(line.publicCode, { code: line.publicCode, mode: line.transportMode });
+          // A public code can name lines of several operators: every id kept.
+          const known = lines.get(line.publicCode) ?? {
+            code: line.publicCode,
+            mode: line.transportMode,
+            ids: [],
+          };
+          if (line.id && !known.ids.includes(line.id)) {
+            known.ids.push(line.id);
+          }
+          lines.set(line.publicCode, known);
         }
       }
     }

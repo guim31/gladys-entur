@@ -142,7 +142,7 @@ datos son el tiempo real de los operadores cuando lo publican; si no, su horario
 - Desarrollada sin vivir en Noruega, contra la API real de Entur: sus comentarios son bienvenidos.
 - Los nombres de las funciones se fijan al crear el dispositivo.
 - Los mensajes de tráfico están en noruego y a menudo en inglés, nunca traducidos.
-- Las salidas se leen para las próximas 24 horas: 20 por parada, 60 si la parada tiene filtros.
+- Las salidas se leen para las próximas 24 horas: las 40 próximas de las líneas y el modo elegidos (filtradas por Entur), 100 con un filtro de dirección. En un gran nudo sin filtro, 40 salidas pueden cubrir solo media hora.
 
 ## Créditos
 

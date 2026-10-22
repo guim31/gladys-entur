@@ -68,7 +68,7 @@ test('add a stop: homonyms, unknown line or mode, filters in the name, duplicate
   const wrongLine = await action(world, 'add_stop', { stop: OSLO_S, lines: 'L1, 31' });
   assert.match(fr(wrongLine), /Ligne\(s\) absente\(s\) de cet arrêt : 31\. Lignes desservies : /);
   const wrongMode = await action(world, 'add_stop', { stop: OSLO_S, mode: 'tram' });
-  assert.equal(fr(wrongMode), 'Aucun Tram à cet arrêt. Modes desservis : Train.');
+  assert.equal(fr(wrongMode), 'Tram : pas desservi à cet arrêt. Modes desservis : Train.');
   assert.deepEqual(world.fake.discoveredDevices, []);
 
   const added = await action(world, 'add_stop', {
@@ -221,11 +221,12 @@ test('triggers: silent first read, then once per journey and threshold', async (
     description: 'Signalfeil på Lillestrøm. Forsinkelser må påregnes.',
   });
 
-  // R13 to Drammen: 5 min at the first read, 1 min three minutes later.
+  // R13 to Drammen: 5 min at the first read, 1 min three minutes later. The
+  // 3-minute threshold was crossed too long ago to be announced.
   const drammen = of(TRIGGERS.SOON).filter((event) => event.data.destination === 'Drammen');
   assert.deepEqual(
     drammen.map((event) => event.data.threshold),
-    ['1', '2', '3'],
+    ['1', '2'],
   );
   assert.equal(drammen[0].data.minutes, 1);
   // A cancelled train never says "time to leave".
@@ -319,6 +320,7 @@ test('/data lost: the stops come back from the Gladys devices', async (t) => {
     id: JERNBANETORGET,
     name: 'Jernbanetorget',
     lines: ['30', '31'],
+    lineIds: world.service.watches[0].lineIds,
     direction: 'Bygdøy',
     mode: '',
   });
@@ -428,4 +430,45 @@ test('a language change renames the devices, not their features', async (t) => {
   await action(world, 'add_stop', { stop: OSLO_S, mode: 'rail' });
   await world.fake.configUpdated({ language: 'de' });
   assert.equal(world.fake.discoveredDevices[0].name, 'Entur · Oslo S (Zug)');
+});
+
+test('a removed stop does not come back at the restart, even with its device', async (t) => {
+  const first = await createWorld();
+  await action(first, 'add_stop', { stop: OSLO_S });
+  await create(first, 'Oslo S');
+  await action(first, 'remove_stop', { name: 'Oslo S' });
+  await first.app.stop();
+  const world = await createWorld({ dataDir: first.dataDir, devices: first.fake.devices });
+  t.after(() => world.app.stop());
+  assert.deepEqual(world.service.watches, []);
+  // Added again: back, and its first read is silent again.
+  await action(world, 'add_stop', { stop: OSLO_S });
+  assert.equal(world.service.watches.length, 1);
+});
+
+test('Entur down: the countdowns go on from the last expected times', async (t) => {
+  const world = await createWorld();
+  t.after(() => world.app.stop());
+  await action(world, 'add_stop', { stop: OSLO_S, lines: 'R13' });
+  const oslo = await create(world, 'Oslo S');
+  // R13 to Dal leaves at 07:46:20, then R13 to Drammen at 07:49:43.
+  assert.equal(lastState(world, oslo, 'line'), 'R13 → Dal');
+  world.network.fail = 503;
+  world.clock.advance(3 * 60000);
+  await world.service.refresh();
+  assert.equal(lastState(world, oslo, 'line'), 'R13 → Drammen');
+  assert.equal(lastState(world, oslo, 'next'), 1);
+});
+
+test('the lines are filtered by Entur, by line id', async (t) => {
+  const world = await createWorld();
+  t.after(() => world.app.stop());
+  await action(world, 'add_stop', { stop: OSLO_S, lines: 'r13, l1' });
+  assert.match(
+    fr(await action(world, 'add_stop', { stop: OSLO_S, lines: 'L1 R13' })),
+    /déjà suivi/,
+  );
+  await create(world, 'Oslo S');
+  const query = world.network.departureRequests().at(-1).body.query;
+  assert.match(query, /whiteListed: \{ lines: \["VYG:Line:L1","VYG:Line:R13"\] \}/);
 });

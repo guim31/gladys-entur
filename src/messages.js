@@ -111,7 +111,8 @@ export const TEXT = {
     addAmbiguous: 'Several stops match: use the identifier of the one you want.',
     addUnknownLines: ({ lines, available }) =>
       `Line(s) not served at this stop: ${lines}. Lines served: ${available}.`,
-    addUnknownMode: ({ mode, available }) => `No ${mode} at this stop. Modes served: ${available}.`,
+    addUnknownMode: ({ mode, available }) =>
+      `${mode}: not served at this stop. Modes served: ${available}.`,
     added: ({ name }) => `${name} added.\nOpen the Discover tab to create its device.`,
     alreadyWatched: ({ name }) => `${name} is already watched with these filters.`,
     tooMany: ({ max }) => `You already watch ${max} stops, the maximum.`,
@@ -155,7 +156,7 @@ export const TEXT = {
     addUnknownLines: ({ lines, available }) =>
       `Ligne(s) absente(s) de cet arrêt : ${lines}. Lignes desservies : ${available}.`,
     addUnknownMode: ({ mode, available }) =>
-      `Aucun ${mode} à cet arrêt. Modes desservis : ${available}.`,
+      `${mode} : pas desservi à cet arrêt. Modes desservis : ${available}.`,
     added: ({ name }) => `${name} ajouté.\nOuvrez l'onglet Découverte pour créer son appareil.`,
     alreadyWatched: ({ name }) => `${name} est déjà suivi avec ces filtres.`,
     tooMany: ({ max }) => `Vous suivez déjà ${max} arrêts, le maximum.`,
@@ -199,7 +200,7 @@ export const TEXT = {
     addUnknownLines: ({ lines, available }) =>
       `Linie(n) hier nicht bedient: ${lines}. Bediente Linien: ${available}.`,
     addUnknownMode: ({ mode, available }) =>
-      `Kein ${mode} an dieser Haltestelle. Bediente Verkehrsmittel: ${available}.`,
+      `${mode}: an dieser Haltestelle nicht bedient. Bediente Verkehrsmittel: ${available}.`,
     added: ({ name }) => `${name} hinzugefügt.\nÖffne den Tab „Entdecken“, um das Gerät anzulegen.`,
     alreadyWatched: ({ name }) => `${name} wird mit diesen Filtern schon verfolgt.`,
     tooMany: ({ max }) => `Du verfolgst schon ${max} Haltestellen, das Maximum.`,
@@ -244,7 +245,7 @@ export const TEXT = {
     addUnknownLines: ({ lines, available }) =>
       `Línea(s) sin servicio en esta parada: ${lines}. Líneas con servicio: ${available}.`,
     addUnknownMode: ({ mode, available }) =>
-      `Ningún ${mode} en esta parada. Modos con servicio: ${available}.`,
+      `${mode}: sin servicio en esta parada. Modos con servicio: ${available}.`,
     added: ({ name }) => `${name} añadida.\nAbra la pestaña Descubrir para crear su dispositivo.`,
     alreadyWatched: ({ name }) => `${name} ya se sigue con estos filtros.`,
     tooMany: ({ max }) => `Ya sigue ${max} paradas, el máximo.`,

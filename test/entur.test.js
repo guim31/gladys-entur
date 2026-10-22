@@ -7,8 +7,8 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   CLIENT_NAME,
-  DEPARTURES_FILTERED,
-  DEPARTURES_UNFILTERED,
+  DEPARTURES,
+  DEPARTURES_DIRECTION,
   Entur,
   EnturError,
   GEOCODER_URL,
@@ -38,29 +38,47 @@ test('every request names the client (ET-Client-Name)', async () => {
   assert.equal(CLIENT_NAME, 'guim31-gladys');
 });
 
-test('one request reads every stop, more departures when filtered', async () => {
+test('one request reads every watch, with its own line and mode filters', async () => {
   const network = createFetch();
   const entur = new Entur({ fetch: network.fetch });
   const result = await entur.departures([
-    { id: OSLO_S, filtered: false },
-    { id: JERNBANETORGET, filtered: true },
-    { id: OSLO_S, filtered: false },
-    { id: 'NSR:StopPlace:999999999', filtered: false },
-    { id: 'not an id', filtered: false },
+    { id: OSLO_S },
+    { id: JERNBANETORGET, lineIds: ['RUT:Line:30', 'bad") {'], mode: 'bus' },
+    { id: OSLO_S, direction: 'Ski', mode: 'nope' },
+    { id: 'NSR:StopPlace:999999999' },
+    { id: 'not an id' },
   ]);
   assert.equal(network.calls.length, 1);
   assert.equal(network.calls[0].url, JOURNEY_PLANNER_URL);
   const query = network.calls[0].body.query;
-  assert.equal((query.match(/stopPlace\(/g) ?? []).length, 3);
-  assert.match(query, new RegExp(`numberOfDepartures: ${DEPARTURES_UNFILTERED}`));
-  assert.match(query, new RegExp(`numberOfDepartures: ${DEPARTURES_FILTERED}`));
+  assert.equal((query.match(/stopPlace\(/g) ?? []).length, 4);
+  assert.match(query, new RegExp(`numberOfDepartures: ${DEPARTURES},`));
+  assert.match(query, new RegExp(`numberOfDepartures: ${DEPARTURES_DIRECTION},`));
+  assert.match(query, /whiteListed: \{ lines: \["RUT:Line:30"\] \}, whiteListedModes: \[bus\]/);
+  assert.doesNotMatch(query, /bad|nope/);
   assert.match(query, /includeCancelledTrips: true/);
-  assert.equal(result.get(OSLO_S).name, 'Oslo S');
-  assert.equal(result.get(OSLO_S).calls.length, 20);
-  assert.equal(result.get(JERNBANETORGET).calls.length, 60);
-  assert.equal(result.get('NSR:StopPlace:999999999'), null);
-  assert.equal(result.has('not an id'), false);
-  assert.deepEqual(await entur.departures([]), new Map());
+  assert.equal(result.length, 5);
+  assert.equal(result[0].name, 'Oslo S');
+  assert.equal(result[0].calls.length, 20);
+  assert.equal(result[1].calls.length, 60);
+  assert.equal(result[3], null);
+  assert.equal(result[4], null);
+  assert.deepEqual(await entur.departures([]), []);
+});
+
+test('an error on one stop keeps the others', async () => {
+  const network = createFetch();
+  const entur = new Entur({
+    fetch: async (url, init) => {
+      const body = await (await network.fetch(url, init)).json();
+      body.errors = [{ message: 'Exception while fetching data (/s1)' }];
+      body.data.s1 = null;
+      return Response.json(body);
+    },
+  });
+  const result = await entur.departures([{ id: OSLO_S }, { id: JERNBANETORGET }]);
+  assert.equal(result[0].name, 'Oslo S');
+  assert.equal(result[1], null);
 });
 
 test('a stop place with its lines; an unknown one is null', async () => {
@@ -68,7 +86,11 @@ test('a stop place with its lines; an unknown one is null', async () => {
   const oslo = await entur.stopPlace(OSLO_S);
   assert.equal(oslo.name, 'Oslo S');
   assert.deepEqual(oslo.modes, ['rail']);
-  assert.ok(oslo.lines.some((line) => line.code === 'L1' && line.mode === 'rail'));
+  assert.ok(
+    oslo.lines.some(
+      (line) => line.code === 'L1' && line.mode === 'rail' && line.ids.includes('VYG:Line:L1'),
+    ),
+  );
   assert.equal(new Set(oslo.lines.map((line) => line.code)).size, oslo.lines.length);
   const torget = await entur.stopPlace(JERNBANETORGET);
   assert.deepEqual([...torget.modes].sort(), ['bus', 'metro', 'tram']);

@@ -142,7 +142,7 @@ sonst ihr Fahrplan.
 - Entwickelt, ohne in Norwegen zu leben, gegen die echte Entur-API: Rückmeldungen sind willkommen.
 - Die Funktionsnamen werden beim Anlegen des Geräts festgelegt.
 - Verkehrsmeldungen sind auf Norwegisch und oft auf Englisch, nie übersetzt.
-- Abfahrten werden für die nächsten 24 Stunden gelesen: 20 pro Haltestelle, 60 mit Filter.
+- Abfahrten werden für die nächsten 24 Stunden gelesen: die nächsten 40 der gewählten Linien und Verkehrsmittel (von Entur gefiltert), 100 mit Richtungsfilter. An einem großen Knoten ohne Filter decken 40 Abfahrten oft nur eine halbe Stunde ab.
 
 ## Danksagung
 

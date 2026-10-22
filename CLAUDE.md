@@ -252,8 +252,11 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
   validés (`^NSR:StopPlace:\d+$`) avant d'être insérés dans la requête.
 - `estimatedCalls(numberOfDepartures, timeRange: 86400, includeCancelledTrips: true)` : sans
   `includeCancelledTrips`, les départs supprimés **disparaissent** au lieu d'arriver avec
-  `cancellation: true`. 20 départs par arrêt, 60 quand un filtre (lignes, direction, mode) est posé :
-  le filtrage se fait côté conteneur, sur `line.publicCode`.
+  `cancellation: true`. **Un alias par surveillance** (pas par arrêt) : lignes et mode filtrés par
+  Entur (`whiteListed: { lines: [ids] }`, `whiteListedModes`), d'où les `id` de lignes gardés à l'ajout
+  (paramètre `line_ids` de l'appareil) ; 40 départs, 100 avec un filtre de direction (filtré dans le
+  conteneur). Filtrer dans le conteneur seul ne marche pas : à Jernbanetorget, 60 départs ne couvrent
+  que 12 minutes. Une erreur sur un alias renvoie `data` partiel + `errors` : on garde les autres.
 - Un `stopPlace` inconnu répond `200` avec `null`, une erreur de requête répond `200` avec `errors`.
 - Le Geocoder (`/geocoder/v1/autocomplete?layers=venue`) renvoie souvent l'arrêt **multimodal parent**
   (Oslo S = `NSR:StopPlace:59872`, bus + train) plutôt que la gare (`337`, train seul) : les deux
@@ -268,8 +271,12 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
   deux sens d'un même arrêt font deux appareils. Cinq fonctionnalités fixes (pas une par ligne).
 - Déclencheurs à seuil (« partir dans N min », « retard ≥ N min ») : le cœur ne fait qu'égalité, donc
   un événement **par seuil atteint**, avec `threshold` (chaîne) pour filtre. Peu de seuils : chaque
-  seuil atteint est un événement (300/min max au cœur). Aucun déclencheur à la première lecture d'un
-  arrêt ; suppressions et messages annoncés gardés dans `/data` (48 h), seuils en mémoire seulement.
+  seuil atteint est un événement (300/min max au cœur, plafond de 200/min dans le conteneur). Un seuil
+  franchi trop tôt avant la lecture (panne, intervalle de 2 min) est marqué sans envoi. Aucun déclencheur à la première lecture d'un
+  arrêt ; suppressions et messages (un événement par message et par ligne) gardés dans `/data` (48 h),
+  seuils en mémoire jusqu'à 2 h après l'heure prévue. Un arrêt retiré est noté (`removed`) pour ne pas
+  revenir de son appareil au redémarrage. Les minutes sont recalculées depuis l'heure estimée à chaque
+  publication : pendant une panne d'Entur, les comptes à rebours continuent.
 
 ## Vérifié (22/10/2026)
 

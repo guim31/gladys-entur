@@ -12,7 +12,7 @@
 // -----------------------------------------------------------------------------
 
 import { createLogger } from '@gladysassistant/integration-sdk';
-import { applyFilters, clockTime, fold, parseCalls, situationsOf } from './departures.js';
+import { aged, applyFilters, clockTime, fold, parseCalls } from './departures.js';
 import { buildStopDevice, clip, stopStates, watchKey, watchName, STOP_TYPE } from './devices.js';
 import { Entur, parseStopPlaceId } from './entur.js';
 import { TEXT, modeName, say, sayAll } from './messages.js';
@@ -40,10 +40,15 @@ const HEARTBEAT_MS = 6 * 3600 * 1000;
 // last seen; their "last seen" is written at most hourly.
 const MEMORY_MS = 48 * 3600 * 1000;
 const SEEN_WRITE_MS = 3600 * 1000;
+// "Time to leave" and delay thresholds of a journey, kept in memory this long
+// after its aimed time.
+const JOURNEY_MEMORY_MS = 2 * 3600 * 1000;
+// Scene events sent per minute at most: the core refuses more than 300.
+const EVENTS_PER_MINUTE = 200;
 
 export class SceneError extends Error {}
 
-/** "L1, l2 ; R13" → ["L1", "L2", "R13"]. */
+/** "l2, L1 ; R13" → ["L1", "L2", "R13"]: sorted, so the order typed does not matter. */
 export function parseLines(text) {
   return [
     ...new Set(
@@ -52,7 +57,7 @@ export function parseLines(text) {
         .map((line) => line.trim().toUpperCase())
         .filter(Boolean),
     ),
-  ];
+  ].sort((a, b) => a.localeCompare(b, 'en', { numeric: true }));
 }
 
 export class EnturService {
@@ -72,6 +77,7 @@ export class EnturService {
     this.timers = timers;
     this.config = { language: 'fr', refreshSeconds: 60 };
     this.watches = [];
+    this.removed = [];
     this.memory = { announced: {}, checked: [] };
     // watchKey → { departures, at }
     this.boards = new Map();
@@ -95,6 +101,7 @@ export class EnturService {
       announced: saved.announced && typeof saved.announced === 'object' ? saved.announced : {},
       checked: Array.isArray(saved.checked) ? saved.checked : [],
     };
+    this.removed = Array.isArray(saved.removed) ? saved.removed : [];
     await this.restoreFromDevices();
     await this.publishDiscovered();
     await this.gladys.setConnectionStatus(true).catch(() => {});
@@ -103,7 +110,11 @@ export class EnturService {
   }
 
   async resync(config) {
+    const previous = this.config;
     this.config = config;
+    if (previous.refreshSeconds !== config.refreshSeconds) {
+      this.startTimer();
+    }
     await this.publishDiscovered();
     await this.refresh({ republish: true });
   }
@@ -145,6 +156,7 @@ export class EnturService {
       watches: this.watches,
       announced: this.memory.announced,
       checked: this.memory.checked,
+      removed: this.removed,
     });
   }
 
@@ -186,10 +198,15 @@ export class EnturService {
         id,
         name: param(device, 'stop_name') || id,
         lines: parseLines(param(device, 'lines')),
+        lineIds: String(param(device, 'line_ids')).split(',').filter(Boolean),
         direction: param(device, 'direction'),
         mode: param(device, 'mode'),
       };
-      if (!this.watches.some((known) => watchKey(known) === watchKey(watch))) {
+      // A stop removed by the user keeps its device until deleted: not restored.
+      if (
+        !this.removed.includes(watchKey(watch)) &&
+        !this.watches.some((known) => watchKey(known) === watchKey(watch))
+      ) {
         this.watches.push(watch);
         changed = true;
       }
@@ -232,7 +249,8 @@ export class EnturService {
 
   refresh(options = {}) {
     if (this.inflight) {
-      return this.inflight.then(() => (options.republish ? this.publishAll() : undefined));
+      // A read in progress may predate a device just created: read again after it.
+      return this.inflight.then(() => this.refresh(options));
     }
     this.inflight = this.doRefresh(options).finally(() => {
       this.inflight = null;
@@ -247,12 +265,7 @@ export class EnturService {
     }
     let results;
     try {
-      results = await this.entur.departures(
-        watches.map((watch) => ({
-          id: watch.id,
-          filtered: Boolean(watch.lines?.length || watch.direction || watch.mode),
-        })),
-      );
+      results = await this.entur.departures(watches);
     } catch (err) {
       if (!this.lastError) {
         logger.warn(`Cannot read the departures: ${err.message}`);
@@ -263,6 +276,8 @@ export class EnturService {
         logger.debug(`Cannot read the departures: ${err.message}`);
       }
       this.lastError = err.message;
+      // The countdowns go on from the last expected times.
+      await this.publishAll();
       return;
     }
     if (this.lastError) {
@@ -274,10 +289,11 @@ export class EnturService {
     this.refreshedAt = now;
     const events = [];
     let memoryChanged = false;
-    for (const watch of watches) {
-      const stop = results.get(watch.id);
+    for (const [index, watch] of watches.entries()) {
+      const stop = results[index];
       if (!stop) {
-        logger.debug(`Entur knows no stop ${watch.id} any more`);
+        logger.debug(`No departures for the stop ${watch.id}`);
+        this.boards.delete(watchKey(watch));
         continue;
       }
       const departures = applyFilters(parseCalls(stop.calls, now, this.config.language), watch);
@@ -301,7 +317,14 @@ export class EnturService {
     for (const watch of this.createdWatches()) {
       const board = this.boards.get(watchKey(watch));
       if (board) {
-        states.push(...stopStates(this.gladys, watch, board.departures, this.config.language));
+        states.push(
+          ...stopStates(
+            this.gladys,
+            watch,
+            aged(board.departures, this.now()),
+            this.config.language,
+          ),
+        );
       }
     }
     if (states.length === 0) {
@@ -355,11 +378,14 @@ export class EnturService {
       delay_minutes: departure.delay,
     });
 
+    // journey key → { aimed, handled }: kept until two hours after the aimed
+    // time, so a journey leaving the window and coming back is not news again.
     const soon = this.soonDone.get(key) ?? new Map();
     const delays = this.delayDone.get(key) ?? new Map();
-    const present = new Set();
+    // A threshold crossed long before this read (Entur down, a 2-minute
+    // interval) is too late to announce: marked, not fired.
+    const slack = Math.ceil(this.config.refreshSeconds / 60);
     for (const departure of departures) {
-      present.add(departure.key);
       if (departure.cancelled) {
         const memo = this.remember(`${key}|cancel|${departure.key}`, now);
         memoryChanged ||= memo.changed;
@@ -370,26 +396,30 @@ export class EnturService {
       }
       // Leave now: each threshold once, when the countdown reaches it. A
       // journey first seen inside a threshold does not fire it.
-      let handled = soon.get(departure.key);
-      if (!handled) {
-        handled = new Set(SOON_MINUTES.filter((minutes) => departure.minutes <= minutes));
-        soon.set(departure.key, handled);
+      const seen = soon.get(departure.key);
+      if (!seen) {
+        soon.set(departure.key, {
+          aimed: departure.aimed,
+          handled: new Set(SOON_MINUTES.filter((minutes) => departure.minutes <= minutes)),
+        });
       } else {
         for (const threshold of SOON_MINUTES) {
-          if (departure.minutes <= threshold && !handled.has(threshold)) {
-            handled.add(threshold);
-            events.push({
-              key: TRIGGERS.SOON,
-              data: { ...base(departure), threshold: String(threshold) },
-            });
+          if (departure.minutes <= threshold && !seen.handled.has(threshold)) {
+            seen.handled.add(threshold);
+            if (departure.minutes >= threshold - slack) {
+              events.push({
+                key: TRIGGERS.SOON,
+                data: { ...base(departure), threshold: String(threshold) },
+              });
+            }
           }
         }
       }
       // Delay: each threshold once per journey.
-      const reached = delays.get(departure.key) ?? new Set();
+      const reached = delays.get(departure.key) ?? { aimed: departure.aimed, handled: new Set() };
       for (const threshold of DELAY_MINUTES) {
-        if (departure.delay >= threshold && !reached.has(threshold)) {
-          reached.add(threshold);
+        if (departure.delay >= threshold && !reached.handled.has(threshold)) {
+          reached.handled.add(threshold);
           if (!firstNow) {
             events.push({
               key: TRIGGERS.DELAYED,
@@ -401,8 +431,8 @@ export class EnturService {
       delays.set(departure.key, reached);
     }
     for (const map of [soon, delays]) {
-      for (const journey of map.keys()) {
-        if (!present.has(journey)) {
+      for (const [journey, entry] of map) {
+        if (now - entry.aimed > JOURNEY_MEMORY_MS) {
           map.delete(journey);
         }
       }
@@ -410,20 +440,29 @@ export class EnturService {
     this.soonDone.set(key, soon);
     this.delayDone.set(key, delays);
 
-    for (const situation of situationsOf(departures)) {
-      const memo = this.remember(`${key}|situation|${situation.id}`, now);
-      memoryChanged ||= memo.changed;
-      if (memo.fresh && !firstEver) {
-        events.push({
-          key: TRIGGERS.DISRUPTION,
-          data: {
-            stop: deviceId,
-            stop_name: watch.name,
-            line: situation.line,
-            summary: clip(situation.summary || situation.description, 1000),
-            description: clip(situation.description, 1000),
-          },
-        });
+    // One event per message and line: a scene filtered on either line hears it.
+    const announced = new Set();
+    for (const departure of departures) {
+      for (const situation of departure.situations) {
+        const memoryKey = `${key}|situation|${situation.id}|${departure.line}`;
+        if (announced.has(memoryKey)) {
+          continue;
+        }
+        announced.add(memoryKey);
+        const memo = this.remember(memoryKey, now);
+        memoryChanged ||= memo.changed;
+        if (memo.fresh && !firstEver) {
+          events.push({
+            key: TRIGGERS.DISRUPTION,
+            data: {
+              stop: deviceId,
+              stop_name: watch.name,
+              line: departure.line,
+              summary: clip(situation.summary || situation.description, 1000),
+              description: clip(situation.description, 1000),
+            },
+          });
+        }
       }
     }
     return { events, memoryChanged };
@@ -451,6 +490,16 @@ export class EnturService {
   }
 
   async fire(key, data) {
+    const minute = Math.floor(this.now() / 60000);
+    if (this.eventMinute !== minute) {
+      this.eventMinute = minute;
+      this.eventCount = 0;
+    }
+    this.eventCount += 1;
+    if (this.eventCount > EVENTS_PER_MINUTE) {
+      logger.debug(`Too many scene events this minute, ${key} dropped`);
+      return;
+    }
     try {
       await this.gladys.publishSceneEvent(key, data);
       this.fireFailed = false;
@@ -482,7 +531,7 @@ export class EnturService {
       await this.refresh();
       board = this.boards.get(watchKey(watch));
     }
-    return { watch, departures: board?.departures ?? null };
+    return { watch, departures: board ? aged(board.departures, this.now()) : null };
   }
 
   // --- Configuration actions -------------------------------------------------
@@ -575,24 +624,33 @@ export class EnturService {
       );
       return messages;
     }
+    const chosen = lines.map((line) =>
+      place.lines.find((known) => known.code.toUpperCase() === line),
+    );
     const watch = {
       id: place.id,
       name: place.name,
       // As Entur writes them ("L1", "31E"), for the device name.
-      lines: lines.map(
-        (line) => place.lines.find((known) => known.code.toUpperCase() === line)?.code ?? line,
-      ),
+      lines: chosen.map((line) => line.code),
+      // For the server-side filter of the departures.
+      lineIds: chosen.flatMap((line) => line.ids ?? []),
       direction: clip(String(direction ?? '').trim(), 40),
       mode: wantedMode,
     };
     const key = watchKey(watch);
     if (this.watches.some((known) => watchKey(known) === key)) {
-      return sayAll(TEXT, 'alreadyWatched', { name: watchName(watch, 'en') });
+      return Object.fromEntries(
+        ['en', 'fr', 'de', 'es'].map((lang) => [
+          lang,
+          say(TEXT, lang, 'alreadyWatched', { name: watchName(watch, lang) }),
+        ]),
+      );
     }
     if (this.watches.length >= MAX_WATCHES) {
       throw this.fail('tooMany', { max: MAX_WATCHES });
     }
     this.watches.push(watch);
+    this.removed = this.removed.filter((removed) => removed !== key);
     await this.save();
     await this.publishDiscovered();
     logger.info(`Stop added: ${watchName(watch, 'en')} (${place.id})`);
@@ -623,7 +681,21 @@ export class EnturService {
     }
     const [watch] = byName;
     this.watches = this.watches.filter((known) => known !== watch);
-    this.boards.delete(watchKey(watch));
+    const key = watchKey(watch);
+    this.boards.delete(key);
+    // Added again later, the stop starts afresh: nothing it held is news.
+    this.soonDone.delete(key);
+    this.delayDone.delete(key);
+    this.checkedNow.delete(key);
+    this.memory.checked = this.memory.checked.filter((checked) => checked !== key);
+    for (const memoryKey of Object.keys(this.memory.announced)) {
+      if (memoryKey.startsWith(`${key}|`)) {
+        delete this.memory.announced[memoryKey];
+      }
+    }
+    if (!this.removed.includes(key)) {
+      this.removed.push(key);
+    }
     await this.save();
     await this.publishDiscovered();
     logger.info(`Stop removed: ${watchName(watch, 'en')}`);

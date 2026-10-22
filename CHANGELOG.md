@@ -10,6 +10,8 @@ the notes of the version's GitHub Release.
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-22
+
 ### Added
 
 - Watch public transport stops anywhere in Norway, from Entur open data (no
@@ -24,3 +26,6 @@ the notes of the version's GitHub Release.
   departure cancelled, new disruption.
 - Scene action "Read the next Entur departures", with a sentence ready to send.
 - Texts and documentation in English, French, German and Spanish.
+
+[Unreleased]: https://github.com/guim31/gladys-entur/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/guim31/gladys-entur/releases/tag/v1.0.0

@@ -1,0 +1,14 @@
+{
+  "geocoding": {
+    "version": "0.2",
+    "attribution": "http://pelias.mapzen.com/v1/attribution",
+    "engine": {
+      "name": "Photon",
+      "author": "Komoot",
+      "version": "1.2.0"
+    },
+    "timestamp": 1792647932724
+  },
+  "type": "FeatureCollection",
+  "features": []
+}

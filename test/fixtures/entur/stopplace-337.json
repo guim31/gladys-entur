@@ -1,0 +1,619 @@
+{
+  "data": {
+    "stopPlace": {
+      "id": "NSR:StopPlace:337",
+      "name": "Oslo S",
+      "transportMode": ["rail"],
+      "quays": [
+        {
+          "lines": [
+            {
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "70",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "IC",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R13x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F5",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F1",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "IC",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "R31",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R31",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

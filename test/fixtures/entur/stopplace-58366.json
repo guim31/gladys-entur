@@ -1,0 +1,426 @@
+{
+  "data": {
+    "stopPlace": {
+      "id": "NSR:StopPlace:58366",
+      "name": "Jernbanetorget",
+      "transportMode": ["bus", "tram", "metro"],
+      "quays": [
+        {
+          "lines": [
+            {
+              "publicCode": "18",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "18",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "19",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "15",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "12",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "19",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "15",
+              "transportMode": "tram"
+            },
+            {
+              "publicCode": "12",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "11N",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "11N",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "74",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "74B",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "54",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "42N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "31B",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "12N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "37",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "31",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "31E",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "5N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "4N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "60",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "3N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "70N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "19N",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "31",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "54",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "5N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "74",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "42N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "74B",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "60",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "31B",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "19N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "12N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "31E",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "74",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "74B",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "31X",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "2N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "FB5",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "1N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "3N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "70N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "4N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "2N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "1N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "FB5",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "71B",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "84E",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "85",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "71",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "4",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "2",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "5",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "1",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "5",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "1",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "4",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "2",
+              "transportMode": "metro"
+            },
+            {
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "81N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "30",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "70E",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "83N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "70",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "81",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "publicCode": "30",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "70",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "83N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "81",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "81N",
+              "transportMode": "bus"
+            },
+            {
+              "publicCode": "70E",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": []
+        }
+      ]
+    }
+  }
+}

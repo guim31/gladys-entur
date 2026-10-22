@@ -1,0 +1,121 @@
+{
+  "geocoding": {
+    "version": "0.2",
+    "attribution": "http://pelias.mapzen.com/v1/attribution",
+    "engine": {
+      "name": "Photon",
+      "author": "Komoot",
+      "version": "1.2.0"
+    },
+    "timestamp": 1792647932592
+  },
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.753051, 59.910357]
+      },
+      "properties": {
+        "id": "NSR:StopPlace:59872",
+        "gid": "openstreetmap:venue:NSR:StopPlace:59872",
+        "layer": "venue",
+        "source": "openstreetmap",
+        "source_id": "NSR:StopPlace:59872",
+        "name": "Oslo S",
+        "street": "NOT_AN_ADDRESS-NSR:StopPlace:59872",
+        "accuracy": "point",
+        "country_a": "NOR",
+        "county": "Oslo",
+        "county_gid": "whosonfirst:county:KVE:TopographicPlace:03",
+        "locality": "Oslo",
+        "locality_gid": "whosonfirst:locality:KVE:TopographicPlace:0301",
+        "label": "Oslo S, Oslo",
+        "category": ["onstreetBus", "railStation"],
+        "mode": [
+          {
+            "bus": "railReplacementBus"
+          },
+          {
+            "rail": null
+          }
+        ],
+        "tariff_zones": [
+          "OST:TariffZone:227",
+          "BRA:TariffZone:311",
+          "RUT:TariffZone:1",
+          "RUT:FareZone:4"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.097887, 60.193361]
+      },
+      "properties": {
+        "id": "NSR:StopPlace:58211",
+        "gid": "openstreetmap:venue:NSR:StopPlace:58211",
+        "layer": "venue",
+        "source": "openstreetmap",
+        "source_id": "NSR:StopPlace:58211",
+        "name": "Oslo lufthavn",
+        "popular_name": "Gardermoen",
+        "street": "NOT_AN_ADDRESS-NSR:StopPlace:58211",
+        "accuracy": "point",
+        "country_a": "NOR",
+        "county": "Akershus",
+        "county_gid": "whosonfirst:county:KVE:TopographicPlace:32",
+        "locality": "Ullensaker",
+        "locality_gid": "whosonfirst:locality:KVE:TopographicPlace:3209",
+        "label": "Oslo lufthavn, Ullensaker",
+        "category": ["railStation", "onstreetBus", "busStation", "airport"],
+        "mode": [
+          {
+            "rail": null
+          },
+          {
+            "bus": null
+          },
+          {
+            "air": null
+          }
+        ],
+        "tariff_zones": ["INN:TariffZone:421", "RUT:TariffZone:4N", "RUT:FareZone:1"]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [11.066049, 60.185477]
+      },
+      "properties": {
+        "id": "NSR:StopPlace:59357",
+        "gid": "whosonfirst:venue:NSR:StopPlace:59357",
+        "layer": "venue",
+        "source": "whosonfirst",
+        "source_id": "NSR:StopPlace:59357",
+        "name": "Scandic Oslo Airport",
+        "street": "NOT_AN_ADDRESS-NSR:StopPlace:59357",
+        "accuracy": "point",
+        "country_a": "NOR",
+        "county": "Akershus",
+        "county_gid": "whosonfirst:county:KVE:TopographicPlace:32",
+        "locality": "Nannestad",
+        "locality_gid": "whosonfirst:locality:KVE:TopographicPlace:3238",
+        "label": "Scandic Oslo Airport, Nannestad",
+        "category": ["onstreetBus"],
+        "mode": [
+          {
+            "bus": "shuttleBus"
+          }
+        ],
+        "tariff_zones": ["INN:TariffZone:421", "RUT:TariffZone:4N", "RUT:FareZone:1"]
+      }
+    }
+  ],
+  "bbox": [10.753051, 59.910357, 11.097887, 60.193361]
+}

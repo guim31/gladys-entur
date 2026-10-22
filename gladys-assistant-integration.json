@@ -1,177 +1,1315 @@
 {
   "manifest_version": 1,
   "type": "device",
-  "name": "Demo Devices Template",
+  "name": "Entur",
   "description": {
-    "en": "Starter template showing sensors, a switch, a dimmable light and a smart plug.",
-    "fr": "Template de démarrage : capteurs, interrupteur, lampe variable et prise connectée."
+    "en": "Next departures in Norway (train, metro, tram, bus, ferry), delays, cancellations and disruptions.",
+    "fr": "Prochains départs en Norvège (train, métro, tram, bus, ferry), retards, suppressions, perturbations.",
+    "de": "Nächste Abfahrten in Norwegen (Zug, U-Bahn, Tram, Bus, Fähre), Verspätungen, Ausfälle, Störungen.",
+    "es": "Próximas salidas en Noruega (tren, metro, tranvía, bus, ferry): retrasos, cancelaciones, incidencias"
   },
   "version": "1.0.0",
-  "docker_image": "ghcr.io/gladysassistant/integration-template-js:1.0.0",
+  "docker_image": "ghcr.io/guim31/gladys-entur:1.0.0",
   "gladys_version": ">=5.1.0",
-  "cover_image": "https://raw.githubusercontent.com/GladysAssistant/integration-template-js/master/cover.png",
-  "categories": ["lighting", "security", "environment"],
-  "transports": ["local", "cloud"],
+  "cover_image": "https://raw.githubusercontent.com/guim31/gladys-entur/main/cover.png",
+  "categories": ["services"],
+  "transports": ["cloud"],
   "config_schema": [
     {
       "key": "intro",
       "type": "section",
-      "label": { "en": "Getting started", "fr": "Pour commencer" },
+      "label": {
+        "en": "How it works",
+        "fr": "Comment ça marche",
+        "de": "So funktioniert es",
+        "es": "Cómo funciona"
+      },
       "description": {
-        "en": "The demo weather station reads real data from the free Open-Meteo API: pick the coordinates to observe. No account, no API key.",
-        "fr": "La station météo de démonstration lit de vraies données via l'API gratuite Open-Meteo : choisissez les coordonnées à observer. Pas de compte, pas de clé d'API."
+        "en": "Find your stops with the actions below, add them (with an optional line, direction or mode filter), then create their devices in the Discover tab. Everything comes from Entur open data: no account, no key.",
+        "fr": "Cherchez vos arrêts avec les actions ci-dessous, ajoutez-les (avec un filtre facultatif de ligne, de direction ou de mode), puis créez leurs appareils dans l'onglet Découverte. Tout vient de l'open data d'Entur : ni compte, ni clé.",
+        "de": "Suche deine Haltestellen mit den Aktionen unten, füge sie hinzu (optional mit Filter nach Linie, Richtung oder Verkehrsmittel) und lege dann ihre Geräte im Tab „Entdecken“ an. Alles stammt aus den Open Data von Entur: kein Konto, kein Schlüssel.",
+        "es": "Busque sus paradas con las acciones de abajo, añádalas (con un filtro opcional de línea, dirección o modo) y luego cree sus dispositivos en la pestaña Descubrir. Todo procede de los datos abiertos de Entur: sin cuenta ni clave."
       },
       "links": [
         {
-          "url": "https://open-meteo.com/en/docs",
-          "label": { "en": "Open-Meteo documentation", "fr": "Documentation Open-Meteo" }
+          "url": "https://github.com/guim31/gladys-entur/blob/main/docs/en.md",
+          "label": {
+            "en": "Setup guide",
+            "fr": "Guide d'installation",
+            "de": "Anleitung",
+            "es": "Guía de instalación"
+          }
+        },
+        {
+          "url": "https://entur.no",
+          "label": {
+            "en": "Entur",
+            "fr": "Entur",
+            "de": "Entur",
+            "es": "Entur"
+          }
         }
       ]
     },
     {
-      "key": "latitude",
-      "type": "number",
-      "label": { "en": "Latitude", "fr": "Latitude" },
-      "description": {
-        "en": "Latitude used for the demo weather sensor.",
-        "fr": "Latitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 48.8566", "fr": "ex. 48.8566" },
-      "required": true,
-      "default": 48.8566,
-      "min": -90,
-      "max": 90
-    },
-    {
-      "key": "longitude",
-      "type": "number",
-      "label": { "en": "Longitude", "fr": "Longitude" },
-      "description": {
-        "en": "Longitude used for the demo weather sensor.",
-        "fr": "Longitude utilisée par le capteur météo de démonstration."
-      },
-      "placeholder": { "en": "e.g. 2.3522", "fr": "ex. 2.3522" },
-      "required": true,
-      "default": 2.3522,
-      "min": -180,
-      "max": 180
-    },
-    {
-      "key": "unit",
+      "key": "language",
       "type": "select",
-      "label": { "en": "Temperature unit", "fr": "Unité de température" },
+      "label": {
+        "en": "Language of the texts",
+        "fr": "Langue des textes",
+        "de": "Sprache der Texte",
+        "es": "Idioma de los textos"
+      },
+      "description": {
+        "en": "Language of the feature names, of the sentences sent to your scenes and of the traffic messages when Entur has them in it (else English, else Norwegian). Feature names are set when a device is created.",
+        "fr": "Langue des noms de fonctionnalités, des phrases envoyées à vos scènes et des messages de trafic quand Entur les a dans cette langue (sinon anglais, sinon norvégien). Les noms sont fixés à la création de l'appareil.",
+        "de": "Sprache der Funktionsnamen, der Sätze für deine Szenen und der Verkehrsmeldungen, wenn Entur sie so hat (sonst Englisch, sonst Norwegisch). Die Namen werden beim Anlegen des Geräts festgelegt.",
+        "es": "Idioma de los nombres de funciones, de las frases enviadas a sus escenas y de los mensajes de tráfico cuando Entur los tiene en él (si no, inglés o noruego). Los nombres se fijan al crear el dispositivo."
+      },
       "required": false,
-      "default": "celsius",
+      "default": "fr",
       "options": [
-        { "value": "celsius", "label": { "en": "Celsius", "fr": "Celsius" } },
-        { "value": "fahrenheit", "label": { "en": "Fahrenheit", "fr": "Fahrenheit" } }
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
       ]
     },
     {
-      "key": "poll_frequency",
-      "type": "number",
-      "label": { "en": "Refresh interval (s)", "fr": "Intervalle de rafraîchissement (s)" },
+      "key": "refresh_interval",
+      "type": "select",
+      "label": {
+        "en": "Refresh interval",
+        "fr": "Fréquence de mise à jour",
+        "de": "Aktualisierungsintervall",
+        "es": "Intervalo de actualización"
+      },
       "description": {
-        "en": "How often sensors are polled, in seconds (one minute minimum).",
-        "fr": "Fréquence d'interrogation des capteurs, en secondes (une minute minimum)."
+        "en": "How often the departures of your created devices are read: one request for all of them.",
+        "fr": "Fréquence de lecture des départs de vos appareils créés : une seule requête pour tous.",
+        "de": "Wie oft die Abfahrten deiner angelegten Geräte gelesen werden: eine Anfrage für alle.",
+        "es": "Frecuencia de lectura de las salidas de sus dispositivos creados: una sola petición para todos."
       },
       "required": false,
-      "default": 300,
-      "min": 60,
-      "max": 3600
+      "default": "60",
+      "options": [
+        {
+          "value": "30",
+          "label": {
+            "en": "30 seconds",
+            "fr": "30 secondes",
+            "de": "30 Sekunden",
+            "es": "30 segundos"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en": "1 minute",
+            "fr": "1 minute",
+            "de": "1 Minute",
+            "es": "1 minuto"
+          }
+        },
+        {
+          "value": "120",
+          "label": {
+            "en": "2 minutes",
+            "fr": "2 minutes",
+            "de": "2 Minuten",
+            "es": "2 minutos"
+          }
+        }
+      ]
     }
   ],
   "actions": [
     {
-      "key": "test_weather",
-      "label": { "en": "Test the weather provider", "fr": "Tester le fournisseur météo" },
-      "timeout_seconds": 30
-    },
-    {
-      "key": "identify",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
+      "key": "search_stops",
+      "label": {
+        "en": "Find a stop",
+        "fr": "Chercher un arrêt",
+        "de": "Haltestelle suchen",
+        "es": "Buscar una parada"
+      },
+      "description": {
+        "en": "Lists the stops matching a name, with their identifier.",
+        "fr": "Liste les arrêts qui correspondent à un nom, avec leur identifiant.",
+        "de": "Listet die Haltestellen zu einem Namen mit ihrer Kennung auf.",
+        "es": "Muestra las paradas que coinciden con un nombre, con su identificador."
+      },
+      "timeout_seconds": 30,
       "fields": [
         {
-          "key": "device",
+          "key": "query",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Stop name",
+            "fr": "Nom de l'arrêt",
+            "de": "Name der Haltestelle",
+            "es": "Nombre de la parada"
+          },
+          "placeholder": {
+            "en": "e.g. Jernbanetorget",
+            "fr": "ex. Jernbanetorget",
+            "de": "z. B. Jernbanetorget",
+            "es": "p. ej. Jernbanetorget"
+          }
+        }
+      ]
+    },
+    {
+      "key": "add_stop",
+      "label": {
+        "en": "Add a stop",
+        "fr": "Ajouter un arrêt",
+        "de": "Haltestelle hinzufügen",
+        "es": "Añadir una parada"
+      },
+      "description": {
+        "en": "Watches a stop: its device then appears in the Discover tab. The same stop with other filters makes another device.",
+        "fr": "Suit un arrêt : son appareil apparaît ensuite dans l'onglet Découverte. Le même arrêt avec d'autres filtres donne un autre appareil.",
+        "de": "Verfolgt eine Haltestelle: ihr Gerät erscheint dann im Tab „Entdecken“. Dieselbe Haltestelle mit anderen Filtern ergibt ein weiteres Gerät.",
+        "es": "Sigue una parada: su dispositivo aparece luego en la pestaña Descubrir. La misma parada con otros filtros da otro dispositivo."
+      },
+      "timeout_seconds": 30,
+      "fields": [
+        {
+          "key": "stop",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Stop name or identifier",
+            "fr": "Nom ou identifiant de l'arrêt",
+            "de": "Name oder Kennung der Haltestelle",
+            "es": "Nombre o identificador de la parada"
+          },
+          "description": {
+            "en": "The identifier (NSR:StopPlace:…) is shown by \"Find a stop\": use it when several stops share a name.",
+            "fr": "L'identifiant (NSR:StopPlace:…) est donné par « Chercher un arrêt » : utilisez-le quand plusieurs arrêts ont le même nom.",
+            "de": "Die Kennung (NSR:StopPlace:…) zeigt „Haltestelle suchen“: nimm sie, wenn mehrere Haltestellen gleich heißen.",
+            "es": "El identificador (NSR:StopPlace:…) lo da «Buscar una parada»: úselo cuando varias paradas tienen el mismo nombre."
+          },
+          "placeholder": {
+            "en": "e.g. NSR:StopPlace:337",
+            "fr": "ex. NSR:StopPlace:337",
+            "de": "z. B. NSR:StopPlace:337",
+            "es": "p. ej. NSR:StopPlace:337"
+          }
+        },
+        {
+          "key": "lines",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Lines (empty: all)",
+            "fr": "Lignes (vide : toutes)",
+            "de": "Linien (leer: alle)",
+            "es": "Líneas (vacío: todas)"
+          },
+          "description": {
+            "en": "Only these lines, separated by commas.",
+            "fr": "Seulement ces lignes, séparées par des virgules.",
+            "de": "Nur diese Linien, durch Kommas getrennt.",
+            "es": "Solo estas líneas, separadas por comas."
+          },
+          "placeholder": {
+            "en": "e.g. L1, R13",
+            "fr": "ex. L1, R13",
+            "de": "z. B. L1, R13",
+            "es": "p. ej. L1, R13"
+          }
+        },
+        {
+          "key": "direction",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Direction (empty: all)",
+            "fr": "Direction (vide : toutes)",
+            "de": "Richtung (leer: alle)",
+            "es": "Dirección (vacío: todas)"
+          },
+          "description": {
+            "en": "Only the departures whose destination contains this text.",
+            "fr": "Seulement les départs dont la destination contient ce texte.",
+            "de": "Nur Abfahrten, deren Ziel diesen Text enthält.",
+            "es": "Solo las salidas cuyo destino contiene este texto."
+          },
+          "placeholder": {
+            "en": "e.g. Ski",
+            "fr": "ex. Ski",
+            "de": "z. B. Ski",
+            "es": "p. ej. Ski"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Mode (empty: all)",
+            "fr": "Mode (vide : tous)",
+            "de": "Verkehrsmittel (leer: alle)",
+            "es": "Modo (vacío: todos)"
+          },
+          "options": [
+            {
+              "value": "rail",
+              "label": {
+                "en": "Train",
+                "fr": "Train",
+                "de": "Zug",
+                "es": "Tren"
+              }
+            },
+            {
+              "value": "metro",
+              "label": {
+                "en": "Metro",
+                "fr": "Métro",
+                "de": "U-Bahn",
+                "es": "Metro"
+              }
+            },
+            {
+              "value": "tram",
+              "label": {
+                "en": "Tram",
+                "fr": "Tram",
+                "de": "Tram",
+                "es": "Tranvía"
+              }
+            },
+            {
+              "value": "bus",
+              "label": {
+                "en": "Bus",
+                "fr": "Bus",
+                "de": "Bus",
+                "es": "Autobús"
+              }
+            },
+            {
+              "value": "coach",
+              "label": {
+                "en": "Coach",
+                "fr": "Car",
+                "de": "Fernbus",
+                "es": "Autocar"
+              }
+            },
+            {
+              "value": "water",
+              "label": {
+                "en": "Ferry, boat",
+                "fr": "Ferry, bateau",
+                "de": "Fähre, Schiff",
+                "es": "Ferry, barco"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "remove_stop",
+      "label": {
+        "en": "Remove a stop",
+        "fr": "Retirer un arrêt",
+        "de": "Haltestelle entfernen",
+        "es": "Quitar una parada"
+      },
+      "description": {
+        "en": "Stops watching it. Its device stays in Gladys until you delete it.",
+        "fr": "Arrête de le suivre. Son appareil reste dans Gladys jusqu'à ce que vous le supprimiez.",
+        "de": "Beendet die Verfolgung. Das Gerät bleibt in Gladys, bis du es löschst.",
+        "es": "Deja de seguirla. Su dispositivo permanece en Gladys hasta que lo elimine."
+      },
+      "timeout_seconds": 15,
+      "fields": [
+        {
+          "key": "name",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Name or identifier",
+            "fr": "Nom ou identifiant",
+            "de": "Name oder Kennung",
+            "es": "Nombre o identificador"
+          },
+          "placeholder": {
+            "en": "e.g. Oslo S (L1)",
+            "fr": "ex. Oslo S (L1)",
+            "de": "z. B. Oslo S (L1)",
+            "es": "p. ej. Oslo S (L1)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "status",
+      "label": {
+        "en": "Show what is watched",
+        "fr": "Voir ce qui est suivi",
+        "de": "Verfolgte anzeigen",
+        "es": "Ver lo que se sigue"
+      },
+      "description": {
+        "en": "The watched stops, their devices and the last read from Entur.",
+        "fr": "Les arrêts suivis, leurs appareils et la dernière lecture d'Entur.",
+        "de": "Die verfolgten Haltestellen, ihre Geräte und der letzte Abruf bei Entur.",
+        "es": "Las paradas seguidas, sus dispositivos y la última lectura de Entur."
+      },
+      "timeout_seconds": 10
+    }
+  ],
+  "widgets": [
+    {
+      "key": "departures",
+      "label": {
+        "en": "Next departures",
+        "fr": "Prochains départs",
+        "de": "Nächste Abfahrten",
+        "es": "Próximas salidas"
+      },
+      "description": {
+        "en": "The next departures of a stop, with delays, cancellations and disruptions.",
+        "fr": "Les prochains départs d'un arrêt, avec retards, suppressions et perturbations.",
+        "de": "Die nächsten Abfahrten einer Haltestelle mit Verspätungen, Ausfällen, Störungen.",
+        "es": "Las próximas salidas de una parada, con retrasos, cancelaciones e incidencias."
+      },
+      "icon": "clock",
+      "settings": [
+        {
+          "key": "stop",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
+          "required": true,
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
         }
       ]
     }
   ],
   "scene_triggers": [
     {
-      "key": "motion_detected",
-      "label": { "en": "Motion detected", "fr": "Mouvement détecté" },
+      "key": "departure_soon",
+      "label": {
+        "en": "Time to leave",
+        "fr": "C'est l'heure de partir",
+        "de": "Zeit zu gehen",
+        "es": "Hora de salir"
+      },
       "description": {
-        "en": "A demo motion sensor saw a person or an animal move.",
-        "fr": "Un détecteur de démonstration a vu bouger une personne ou un animal."
+        "en": "A departure of a watched stop leaves in the chosen number of minutes: once per departure.",
+        "fr": "Un départ d'un arrêt suivi part dans le nombre de minutes choisi : une fois par départ.",
+        "de": "Eine Abfahrt einer verfolgten Haltestelle fährt in der gewählten Zahl Minuten: einmal pro Abfahrt.",
+        "es": "Una salida de una parada seguida sale en el número de minutos elegido: una vez por salida."
       },
       "fields": [
         {
-          "key": "device",
+          "key": "stop",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Sensor", "fr": "Détecteur" }
+          "required": true,
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
         },
         {
-          "key": "target",
-          "type": "multi_select",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" },
+          "key": "line",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Line (empty: any)",
+            "fr": "Ligne (vide : toutes)",
+            "de": "Linie (leer: alle)",
+            "es": "Línea (vacío: todas)"
+          },
+          "description": {
+            "en": "As written on the vehicle, upper case, e.g. L1, R13, 31E.",
+            "fr": "Telle qu'écrite sur le véhicule, en majuscules, par ex. L1, R13, 31E.",
+            "de": "Wie auf dem Fahrzeug, in Großbuchstaben, z. B. L1, R13, 31E.",
+            "es": "Tal como figura en el vehículo, en mayúsculas, p. ej. L1, R13, 31E."
+          },
+          "placeholder": {
+            "en": "e.g. L1",
+            "fr": "ex. L1",
+            "de": "z. B. L1",
+            "es": "p. ej. L1"
+          }
+        },
+        {
+          "key": "threshold",
+          "type": "select",
+          "required": true,
+          "label": {
+            "en": "Leaves in",
+            "fr": "Part dans",
+            "de": "Fährt in",
+            "es": "Sale en"
+          },
           "options": [
-            { "value": "person", "label": { "en": "Person", "fr": "Personne" } },
-            { "value": "animal", "label": { "en": "Animal", "fr": "Animal" } }
+            {
+              "value": "1",
+              "label": {
+                "en": "1 min",
+                "fr": "1 min",
+                "de": "1 Min.",
+                "es": "1 min"
+              }
+            },
+            {
+              "value": "2",
+              "label": {
+                "en": "2 min",
+                "fr": "2 min",
+                "de": "2 Min.",
+                "es": "2 min"
+              }
+            },
+            {
+              "value": "3",
+              "label": {
+                "en": "3 min",
+                "fr": "3 min",
+                "de": "3 Min.",
+                "es": "3 min"
+              }
+            },
+            {
+              "value": "5",
+              "label": {
+                "en": "5 min",
+                "fr": "5 min",
+                "de": "5 Min.",
+                "es": "5 min"
+              }
+            },
+            {
+              "value": "7",
+              "label": {
+                "en": "7 min",
+                "fr": "7 min",
+                "de": "7 Min.",
+                "es": "7 min"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10 min",
+                "fr": "10 min",
+                "de": "10 Min.",
+                "es": "10 min"
+              }
+            },
+            {
+              "value": "12",
+              "label": {
+                "en": "12 min",
+                "fr": "12 min",
+                "de": "12 Min.",
+                "es": "12 min"
+              }
+            },
+            {
+              "value": "15",
+              "label": {
+                "en": "15 min",
+                "fr": "15 min",
+                "de": "15 Min.",
+                "es": "15 min"
+              }
+            },
+            {
+              "value": "20",
+              "label": {
+                "en": "20 min",
+                "fr": "20 min",
+                "de": "20 Min.",
+                "es": "20 min"
+              }
+            }
           ]
         }
       ],
       "variables": [
         {
-          "key": "target",
+          "key": "stop_name",
           "type": "string",
-          "label": { "en": "What moved", "fr": "Ce qui a bougé" }
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "label": {
+            "en": "Line",
+            "fr": "Ligne",
+            "de": "Linie",
+            "es": "Línea"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "Mode (rail, bus, tram, metro, water…)",
+            "fr": "Mode (rail, bus, tram, metro, water…)",
+            "de": "Verkehrsmittel (rail, bus, tram, metro, water…)",
+            "es": "Modo (rail, bus, tram, metro, water…)"
+          }
+        },
+        {
+          "key": "destination",
+          "type": "string",
+          "label": {
+            "en": "Destination",
+            "fr": "Destination",
+            "de": "Ziel",
+            "es": "Destino"
+          }
+        },
+        {
+          "key": "platform",
+          "type": "string",
+          "label": {
+            "en": "Platform",
+            "fr": "Quai",
+            "de": "Gleis/Steig",
+            "es": "Andén"
+          }
+        },
+        {
+          "key": "scheduled_time",
+          "type": "string",
+          "label": {
+            "en": "Scheduled time",
+            "fr": "Heure prévue",
+            "de": "Planmäßige Zeit",
+            "es": "Hora prevista"
+          }
+        },
+        {
+          "key": "expected_time",
+          "type": "string",
+          "label": {
+            "en": "Expected time",
+            "fr": "Heure estimée",
+            "de": "Erwartete Zeit",
+            "es": "Hora estimada"
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "label": {
+            "en": "Leaves in (minutes)",
+            "fr": "Part dans (minutes)",
+            "de": "Fährt in (Minuten)",
+            "es": "Sale en (minutos)"
+          }
+        },
+        {
+          "key": "delay_minutes",
+          "type": "number",
+          "label": {
+            "en": "Delay (minutes)",
+            "fr": "Retard (minutes)",
+            "de": "Verspätung (Minuten)",
+            "es": "Retraso (minutos)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "departure_delayed",
+      "label": {
+        "en": "Departure delayed",
+        "fr": "Départ en retard",
+        "de": "Abfahrt verspätet",
+        "es": "Salida con retraso"
+      },
+      "description": {
+        "en": "A departure of a watched stop is late by the chosen number of minutes or more: once per departure.",
+        "fr": "Un départ d'un arrêt suivi a au moins le retard choisi : une fois par départ.",
+        "de": "Eine Abfahrt einer verfolgten Haltestelle ist mindestens so viele Minuten verspätet: einmal pro Abfahrt.",
+        "es": "Una salida de una parada seguida lleva al menos el retraso elegido: una vez por salida."
+      },
+      "fields": [
+        {
+          "key": "stop",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Line (empty: any)",
+            "fr": "Ligne (vide : toutes)",
+            "de": "Linie (leer: alle)",
+            "es": "Línea (vacío: todas)"
+          },
+          "description": {
+            "en": "As written on the vehicle, upper case, e.g. L1, R13, 31E.",
+            "fr": "Telle qu'écrite sur le véhicule, en majuscules, par ex. L1, R13, 31E.",
+            "de": "Wie auf dem Fahrzeug, in Großbuchstaben, z. B. L1, R13, 31E.",
+            "es": "Tal como figura en el vehículo, en mayúsculas, p. ej. L1, R13, 31E."
+          },
+          "placeholder": {
+            "en": "e.g. L1",
+            "fr": "ex. L1",
+            "de": "z. B. L1",
+            "es": "p. ej. L1"
+          }
+        },
+        {
+          "key": "threshold",
+          "type": "select",
+          "required": true,
+          "label": {
+            "en": "Late by at least",
+            "fr": "Retard d'au moins",
+            "de": "Verspätung mindestens",
+            "es": "Retraso de al menos"
+          },
+          "options": [
+            {
+              "value": "1",
+              "label": {
+                "en": "1 min",
+                "fr": "1 min",
+                "de": "1 Min.",
+                "es": "1 min"
+              }
+            },
+            {
+              "value": "2",
+              "label": {
+                "en": "2 min",
+                "fr": "2 min",
+                "de": "2 Min.",
+                "es": "2 min"
+              }
+            },
+            {
+              "value": "3",
+              "label": {
+                "en": "3 min",
+                "fr": "3 min",
+                "de": "3 Min.",
+                "es": "3 min"
+              }
+            },
+            {
+              "value": "5",
+              "label": {
+                "en": "5 min",
+                "fr": "5 min",
+                "de": "5 Min.",
+                "es": "5 min"
+              }
+            },
+            {
+              "value": "10",
+              "label": {
+                "en": "10 min",
+                "fr": "10 min",
+                "de": "10 Min.",
+                "es": "10 min"
+              }
+            },
+            {
+              "value": "15",
+              "label": {
+                "en": "15 min",
+                "fr": "15 min",
+                "de": "15 Min.",
+                "es": "15 min"
+              }
+            },
+            {
+              "value": "20",
+              "label": {
+                "en": "20 min",
+                "fr": "20 min",
+                "de": "20 Min.",
+                "es": "20 min"
+              }
+            },
+            {
+              "value": "30",
+              "label": {
+                "en": "30 min",
+                "fr": "30 min",
+                "de": "30 Min.",
+                "es": "30 min"
+              }
+            },
+            {
+              "value": "60",
+              "label": {
+                "en": "60 min",
+                "fr": "60 min",
+                "de": "60 Min.",
+                "es": "60 min"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "stop_name",
+          "type": "string",
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "label": {
+            "en": "Line",
+            "fr": "Ligne",
+            "de": "Linie",
+            "es": "Línea"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "Mode (rail, bus, tram, metro, water…)",
+            "fr": "Mode (rail, bus, tram, metro, water…)",
+            "de": "Verkehrsmittel (rail, bus, tram, metro, water…)",
+            "es": "Modo (rail, bus, tram, metro, water…)"
+          }
+        },
+        {
+          "key": "destination",
+          "type": "string",
+          "label": {
+            "en": "Destination",
+            "fr": "Destination",
+            "de": "Ziel",
+            "es": "Destino"
+          }
+        },
+        {
+          "key": "platform",
+          "type": "string",
+          "label": {
+            "en": "Platform",
+            "fr": "Quai",
+            "de": "Gleis/Steig",
+            "es": "Andén"
+          }
+        },
+        {
+          "key": "scheduled_time",
+          "type": "string",
+          "label": {
+            "en": "Scheduled time",
+            "fr": "Heure prévue",
+            "de": "Planmäßige Zeit",
+            "es": "Hora prevista"
+          }
+        },
+        {
+          "key": "expected_time",
+          "type": "string",
+          "label": {
+            "en": "Expected time",
+            "fr": "Heure estimée",
+            "de": "Erwartete Zeit",
+            "es": "Hora estimada"
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "label": {
+            "en": "Leaves in (minutes)",
+            "fr": "Part dans (minutes)",
+            "de": "Fährt in (Minuten)",
+            "es": "Sale en (minutos)"
+          }
+        },
+        {
+          "key": "delay_minutes",
+          "type": "number",
+          "label": {
+            "en": "Delay (minutes)",
+            "fr": "Retard (minutes)",
+            "de": "Verspätung (Minuten)",
+            "es": "Retraso (minutos)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "departure_cancelled",
+      "label": {
+        "en": "Departure cancelled",
+        "fr": "Départ supprimé",
+        "de": "Abfahrt fällt aus",
+        "es": "Salida cancelada"
+      },
+      "description": {
+        "en": "A departure of a watched stop is cancelled, in the next hours.",
+        "fr": "Un départ d'un arrêt suivi est supprimé, dans les prochaines heures.",
+        "de": "Eine Abfahrt einer verfolgten Haltestelle fällt in den nächsten Stunden aus.",
+        "es": "Una salida de una parada seguida se cancela, en las próximas horas."
+      },
+      "fields": [
+        {
+          "key": "stop",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Line (empty: any)",
+            "fr": "Ligne (vide : toutes)",
+            "de": "Linie (leer: alle)",
+            "es": "Línea (vacío: todas)"
+          },
+          "description": {
+            "en": "As written on the vehicle, upper case, e.g. L1, R13, 31E.",
+            "fr": "Telle qu'écrite sur le véhicule, en majuscules, par ex. L1, R13, 31E.",
+            "de": "Wie auf dem Fahrzeug, in Großbuchstaben, z. B. L1, R13, 31E.",
+            "es": "Tal como figura en el vehículo, en mayúsculas, p. ej. L1, R13, 31E."
+          },
+          "placeholder": {
+            "en": "e.g. L1",
+            "fr": "ex. L1",
+            "de": "z. B. L1",
+            "es": "p. ej. L1"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "stop_name",
+          "type": "string",
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "label": {
+            "en": "Line",
+            "fr": "Ligne",
+            "de": "Linie",
+            "es": "Línea"
+          }
+        },
+        {
+          "key": "mode",
+          "type": "string",
+          "label": {
+            "en": "Mode (rail, bus, tram, metro, water…)",
+            "fr": "Mode (rail, bus, tram, metro, water…)",
+            "de": "Verkehrsmittel (rail, bus, tram, metro, water…)",
+            "es": "Modo (rail, bus, tram, metro, water…)"
+          }
+        },
+        {
+          "key": "destination",
+          "type": "string",
+          "label": {
+            "en": "Destination",
+            "fr": "Destination",
+            "de": "Ziel",
+            "es": "Destino"
+          }
+        },
+        {
+          "key": "platform",
+          "type": "string",
+          "label": {
+            "en": "Platform",
+            "fr": "Quai",
+            "de": "Gleis/Steig",
+            "es": "Andén"
+          }
+        },
+        {
+          "key": "scheduled_time",
+          "type": "string",
+          "label": {
+            "en": "Scheduled time",
+            "fr": "Heure prévue",
+            "de": "Planmäßige Zeit",
+            "es": "Hora prevista"
+          }
+        },
+        {
+          "key": "expected_time",
+          "type": "string",
+          "label": {
+            "en": "Expected time",
+            "fr": "Heure estimée",
+            "de": "Erwartete Zeit",
+            "es": "Hora estimada"
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "label": {
+            "en": "Leaves in (minutes)",
+            "fr": "Part dans (minutes)",
+            "de": "Fährt in (Minuten)",
+            "es": "Sale en (minutos)"
+          }
+        },
+        {
+          "key": "delay_minutes",
+          "type": "number",
+          "label": {
+            "en": "Delay (minutes)",
+            "fr": "Retard (minutes)",
+            "de": "Verspätung (Minuten)",
+            "es": "Retraso (minutos)"
+          }
+        }
+      ]
+    },
+    {
+      "key": "new_disruption",
+      "label": {
+        "en": "New disruption",
+        "fr": "Nouvelle perturbation",
+        "de": "Neue Störung",
+        "es": "Nueva incidencia"
+      },
+      "description": {
+        "en": "A new traffic message touches the departures of a watched stop.",
+        "fr": "Un nouveau message de trafic touche les départs d'un arrêt suivi.",
+        "de": "Eine neue Verkehrsmeldung betrifft die Abfahrten einer verfolgten Haltestelle.",
+        "es": "Un nuevo mensaje de tráfico afecta a las salidas de una parada seguida."
+      },
+      "fields": [
+        {
+          "key": "stop",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Line (empty: any)",
+            "fr": "Ligne (vide : toutes)",
+            "de": "Linie (leer: alle)",
+            "es": "Línea (vacío: todas)"
+          },
+          "description": {
+            "en": "As written on the vehicle, upper case, e.g. L1, R13, 31E.",
+            "fr": "Telle qu'écrite sur le véhicule, en majuscules, par ex. L1, R13, 31E.",
+            "de": "Wie auf dem Fahrzeug, in Großbuchstaben, z. B. L1, R13, 31E.",
+            "es": "Tal como figura en el vehículo, en mayúsculas, p. ej. L1, R13, 31E."
+          },
+          "placeholder": {
+            "en": "e.g. L1",
+            "fr": "ex. L1",
+            "de": "z. B. L1",
+            "es": "p. ej. L1"
+          }
+        }
+      ],
+      "variables": [
+        {
+          "key": "stop_name",
+          "type": "string",
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "label": {
+            "en": "Line",
+            "fr": "Ligne",
+            "de": "Linie",
+            "es": "Línea"
+          }
+        },
+        {
+          "key": "summary",
+          "type": "string",
+          "label": {
+            "en": "Summary",
+            "fr": "Résumé",
+            "de": "Zusammenfassung",
+            "es": "Resumen"
+          }
+        },
+        {
+          "key": "description",
+          "type": "string",
+          "label": {
+            "en": "Details",
+            "fr": "Détails",
+            "de": "Details",
+            "es": "Detalles"
+          }
         }
       ]
     }
   ],
   "scene_actions": [
     {
-      "key": "identify_device",
-      "label": { "en": "Identify a device", "fr": "Identifier un appareil" },
-      "description": {
-        "en": "Make a device signal itself (the demo light blinks).",
-        "fr": "Fait se signaler un appareil (la lampe de démonstration clignote)."
+      "key": "get_next_departures",
+      "label": {
+        "en": "Read the next Entur departures",
+        "fr": "Lire les prochains départs Entur",
+        "de": "Nächste Entur-Abfahrten lesen",
+        "es": "Leer las próximas salidas de Entur"
       },
-      "timeout_seconds": 15,
+      "description": {
+        "en": "The next departures of a watched stop, with a sentence ready to send: \"Train L1 to Spikkestad at Oslo S: in 3 and 18 min\".",
+        "fr": "Les prochains départs d'un arrêt suivi, avec une phrase prête à envoyer : « Train L1 vers Spikkestad à Oslo S : dans 3 et 18 min ».",
+        "de": "Die nächsten Abfahrten einer verfolgten Haltestelle, mit einem fertigen Satz: „Zug L1 nach Spikkestad ab Oslo S: in 3 und 18 Min.“",
+        "es": "Las próximas salidas de una parada seguida, con una frase lista: «Tren L1 hacia Spikkestad en Oslo S: en 3 y 18 min»."
+      },
+      "timeout_seconds": 30,
       "fields": [
         {
-          "key": "device",
+          "key": "stop",
           "type": "select",
           "source": "devices",
-          "label": { "en": "Device", "fr": "Appareil" },
-          "required": true
+          "required": true,
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Line (empty: any)",
+            "fr": "Ligne (vide : toutes)",
+            "de": "Linie (leer: alle)",
+            "es": "Línea (vacío: todas)"
+          },
+          "description": {
+            "en": "As written on the vehicle, upper case, e.g. L1, R13, 31E.",
+            "fr": "Telle qu'écrite sur le véhicule, en majuscules, par ex. L1, R13, 31E.",
+            "de": "Wie auf dem Fahrzeug, in Großbuchstaben, z. B. L1, R13, 31E.",
+            "es": "Tal como figura en el vehículo, en mayúsculas, p. ej. L1, R13, 31E."
+          },
+          "placeholder": {
+            "en": "e.g. L1",
+            "fr": "ex. L1",
+            "de": "z. B. L1",
+            "es": "p. ej. L1"
+          }
         }
       ],
       "outputs": [
         {
-          "key": "signalled",
-          "type": "boolean",
-          "label": { "en": "Device signalled", "fr": "Appareil signalé" }
+          "key": "sentence",
+          "type": "string",
+          "label": {
+            "en": "Sentence",
+            "fr": "Phrase",
+            "de": "Satz",
+            "es": "Frase"
+          }
+        },
+        {
+          "key": "stop_name",
+          "type": "string",
+          "label": {
+            "en": "Stop",
+            "fr": "Arrêt",
+            "de": "Haltestelle",
+            "es": "Parada"
+          }
+        },
+        {
+          "key": "line",
+          "type": "string",
+          "label": {
+            "en": "Line of the next departure",
+            "fr": "Ligne du prochain départ",
+            "de": "Linie der nächsten Abfahrt",
+            "es": "Línea de la próxima salida"
+          }
+        },
+        {
+          "key": "destination",
+          "type": "string",
+          "label": {
+            "en": "Destination",
+            "fr": "Destination",
+            "de": "Ziel",
+            "es": "Destino"
+          }
+        },
+        {
+          "key": "minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes to wait",
+            "fr": "Minutes à attendre",
+            "de": "Wartezeit (Minuten)",
+            "es": "Minutos de espera"
+          }
+        },
+        {
+          "key": "following_minutes",
+          "type": "number",
+          "label": {
+            "en": "Minutes to the following one",
+            "fr": "Minutes jusqu'au suivant",
+            "de": "Minuten bis zur übernächsten",
+            "es": "Minutos hasta la siguiente"
+          }
+        },
+        {
+          "key": "delay_minutes",
+          "type": "number",
+          "label": {
+            "en": "Delay (minutes)",
+            "fr": "Retard (minutes)",
+            "de": "Verspätung (Minuten)",
+            "es": "Retraso (minutos)"
+          }
+        },
+        {
+          "key": "expected_time",
+          "type": "string",
+          "label": {
+            "en": "Expected time",
+            "fr": "Heure estimée",
+            "de": "Erwartete Zeit",
+            "es": "Hora estimada"
+          }
+        },
+        {
+          "key": "platform",
+          "type": "string",
+          "label": {
+            "en": "Platform",
+            "fr": "Quai",
+            "de": "Gleis/Steig",
+            "es": "Andén"
+          }
+        },
+        {
+          "key": "realtime",
+          "type": "number",
+          "label": {
+            "en": "Real time (1 = yes, 0 = timetable)",
+            "fr": "Temps réel (1 = oui, 0 = horaire)",
+            "de": "Echtzeit (1 = ja, 0 = Fahrplan)",
+            "es": "Tiempo real (1 = sí, 0 = horario)"
+          }
+        },
+        {
+          "key": "disrupted",
+          "type": "number",
+          "label": {
+            "en": "Disruption (1 = yes, 0 = no)",
+            "fr": "Perturbation (1 = oui, 0 = non)",
+            "de": "Störung (1 = ja, 0 = nein)",
+            "es": "Incidencia (1 = sí, 0 = no)"
+          }
         }
       ]
-    }
-  ],
-  "widgets": [
-    {
-      "key": "demo_status",
-      "label": { "en": "Demo status", "fr": "État de la démo" },
-      "description": {
-        "en": "Live temperature and plug power, plug connection and observed location.",
-        "fr": "Température et puissance en direct, connexion de la prise, position observée."
-      },
-      "icon": "activity",
-      "action_timeout_seconds": 15
     }
   ]
 }

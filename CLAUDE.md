@@ -31,16 +31,23 @@ pushing.
 ## Architecture
 
 ```
-index.js                          SDK wiring only: handlers registered before connect()
-src/devices/index.js              registry of the device blueprints + dispatch helpers
-src/devices/<type>.js             one device type per file (buildDevice, onPoll, onSetValue...)
+index.js                          SDK wiring only: registerHandlers() then connect()
+src/app.js                        every SDK handler -> service; configuration actions
+src/service.js                    watch list, refresh timer, devices/states, scene triggers, actions
+src/entur.js                      Entur client: Journey Planner v3 GraphQL (batched), Geocoder
+src/departures.js                 estimated calls -> departures (minutes, delay, filters, messages)
+src/devices.js                    Gladys device of a watched stop, its states
 src/scenes.js                     scene action handlers (manifest `scene_actions`)
 src/widgets.js                    dashboard widget handlers (manifest `widgets`)
+src/messages.js                   texts sent from the container (en, fr, de, es)
+src/store.js                      /data/watch.json (atomic, coalesced writes)
 src/config.js                     DEFAULT_CONFIG (mirrors the manifest defaults) + normalization
-src/weather.js                    example driver (Open-Meteo)
-gladys-assistant-integration.json manifest: name, config_schema, actions, image...
-docs/en.md, docs/fr.md            user documentation, re-hosted by Gladys (mandatory)
+gladys-assistant-integration.json manifest: config, actions, widget, scene triggers and action
+docs/{en,fr,de,es}.md             user documentation, re-hosted by Gladys (en and fr mandatory)
 test/                             node --test, against the SDK's fake Gladys (integration-sdk/testing)
+test/helpers/world.js             fake Gladys + fake Entur on the fixtures + manual clock + /data
+test/helpers/scenario.js          cancellation, delay and disruption staged on the real calls
+test/fixtures/entur               real Entur answers of 22/10/2026 07:45 (Oslo S, Jernbanetorget)
 .github/scripts/release.mjs       release helpers (manifest bump, changelog), tested in test/
 ```
 
@@ -70,8 +77,9 @@ test/                             node --test, against the SDK's fake Gladys (in
   `type: "provider"`: 5.1.0). `test/manifest.test.js` ties the manifest to the
   code (defaults, action, scene and widget handlers): change both sides
   together.
-- **User-facing text** is bilingual (English and French): action messages,
-  manifest texts, and `docs/en.md` / `docs/fr.md`, kept in sync.
+- **User-facing text** is in four languages (English, French, German with
+  "du", Spanish with "usted"): action messages, manifest texts, feature names
+  and `docs/{en,fr,de,es}.md`, kept in sync (`test/i18n.test.js`).
 - **Style.** Prettier formats, ESLint catches mistakes. Comments explain why,
   in English. Tests never touch the network.
 
@@ -233,3 +241,45 @@ long, et sur un « Sie »/« Ihr… » de politesse en allemand. Le store exige 
 - Docs `en`, `fr`, `de`, `es` avec les mêmes sections.
 - Chauffe, ouverture, sécurité : ne rien rendre pilotable « comme un thermostat » ou par un assistant
   vocal quand une erreur serait dangereuse (leçon d'OctoPrint).
+
+# Intégration Entur (notes de développement, 22/10/2026)
+
+## API (ouvertes, sans clé, licence NLOD)
+
+- Journey Planner v3 GraphQL `https://api.entur.io/journey-planner/v3/graphql`, en-tête
+  **`ET-Client-Name: guim31-gladys`** obligatoire (sans lui, quota bien plus bas). Une seule requête par
+  cycle pour tous les arrêts créés, un alias `sN: stopPlace(id: "…")` par arrêt : les identifiants sont
+  validés (`^NSR:StopPlace:\d+$`) avant d'être insérés dans la requête.
+- `estimatedCalls(numberOfDepartures, timeRange: 86400, includeCancelledTrips: true)` : sans
+  `includeCancelledTrips`, les départs supprimés **disparaissent** au lieu d'arriver avec
+  `cancellation: true`. **Un alias par surveillance** (pas par arrêt) : lignes et mode filtrés par
+  Entur (`whiteListed: { lines: [ids] }`, `whiteListedModes`), d'où les `id` de lignes gardés à l'ajout
+  (paramètre `line_ids` de l'appareil) ; 40 départs, 100 avec un filtre de direction (filtré dans le
+  conteneur). Filtrer dans le conteneur seul ne marche pas : à Jernbanetorget, 60 départs ne couvrent
+  que 12 minutes. Une erreur sur un alias renvoie `data` partiel + `errors` : on garde les autres.
+- Un `stopPlace` inconnu répond `200` avec `null`, une erreur de requête répond `200` avec `errors`.
+- Le Geocoder (`/geocoder/v1/autocomplete?layers=venue`) renvoie souvent l'arrêt **multimodal parent**
+  (Oslo S = `NSR:StopPlace:59872`, bus + train) plutôt que la gare (`337`, train seul) : les deux
+  marchent, le parent agrège les départs de ses enfants.
+- Les messages de trafic (`situations`) ont `summary`/`description` en `no` et souvent `en`, parfois
+  `no` seul : on prend la langue de la config, sinon l'anglais, sinon le norvégien.
+- `ø` et `æ` ne se décomposent pas en NFD : `fold` les réécrit (`lillestrom` trouve `Lillestrøm`).
+
+## Choix
+
+- Un appareil par arrêt **et jeu de filtres** (`external_id` = numéro + filtres, `337-l1-l2-to-ski`) :
+  deux sens d'un même arrêt font deux appareils. Cinq fonctionnalités fixes (pas une par ligne).
+- Déclencheurs à seuil (« partir dans N min », « retard ≥ N min ») : le cœur ne fait qu'égalité, donc
+  un événement **par seuil atteint**, avec `threshold` (chaîne) pour filtre. Peu de seuils : chaque
+  seuil atteint est un événement (300/min max au cœur, plafond de 200/min dans le conteneur). Un seuil
+  franchi trop tôt avant la lecture (panne, intervalle de 2 min) est marqué sans envoi. Aucun déclencheur à la première lecture d'un
+  arrêt ; suppressions et messages (un événement par message et par ligne) gardés dans `/data` (48 h),
+  seuils en mémoire jusqu'à 2 h après l'heure prévue. Un arrêt retiré est noté (`removed`) pour ne pas
+  revenir de son appareil au redémarrage. Les minutes sont recalculées depuis l'heure estimée à chaque
+  publication : pendant une panne d'Entur, les comptes à rebours continuent.
+
+## Vérifié (22/10/2026)
+
+- API réelle : Oslo S (`337`), Jernbanetorget (`58366`, métro/tram/bus), parent `59872`, arrêt inconnu,
+  erreur GraphQL. Pas de suppression ce matin-là : cas reconstitués sur les réponses réelles
+  (`test/helpers/scenario.js`).

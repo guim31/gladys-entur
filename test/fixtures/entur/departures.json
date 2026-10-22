@@ -1,0 +1,1735 @@
+{
+  "data": {
+    "s0": {
+      "id": "NSR:StopPlace:337",
+      "name": "Oslo S",
+      "estimatedCalls": [
+        {
+          "aimedDepartureTime": "2026-10-22T07:41:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:45:39+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "7"
+          },
+          "destinationDisplay": {
+            "frontText": "Spikkestad"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2211_443602-R",
+            "line": {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:44:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:46:20+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "11"
+          },
+          "destinationDisplay": {
+            "frontText": "Dal"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1611-SUD_766511-R",
+            "line": {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            }
+          },
+          "situations": [
+            {
+              "id": "UHRTaXR1YXRpb25FbGVtZW50Ok5TQjpTaXR1YXRpb25OdW1iZXI6NjRmNDMxYzItYWE0OS00MGQyLTlmYzEtMGFlMGQzOWIxYWY2",
+              "summary": [
+                {
+                  "value": "Færre vogner",
+                  "language": "no"
+                },
+                {
+                  "value": "Fewer carriages",
+                  "language": "en"
+                }
+              ],
+              "description": [
+                {
+                  "value": "Denne avgangen kjører dessverre med 5 vogner i stedet for 10 vogner. Dette skyldes at vi mangler et togsett.",
+                  "language": "no"
+                },
+                {
+                  "value": "Unfortunately, this departure runs with 5 carriages instead of 10 carriages. This is because we are a train set short.",
+                  "language": "en"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:47:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:47:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "8"
+          },
+          "destinationDisplay": {
+            "frontText": "Stabekk"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2714-SKI_443920-R",
+            "line": {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:46:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:47:26+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "9"
+          },
+          "destinationDisplay": {
+            "frontText": "Ski"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2711-HVK_443917-R",
+            "line": {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            }
+          },
+          "situations": [
+            {
+              "id": "UHRTaXR1YXRpb25FbGVtZW50Ok5TQjpTaXR1YXRpb25OdW1iZXI6Mzc0NjkyMjMtNWE5Ny00OTZiLTlhYTMtNjMzYTUyMmY4MWI3",
+              "summary": [
+                {
+                  "value": "Færre vogner",
+                  "language": "no"
+                },
+                {
+                  "value": "Fewer carriages",
+                  "language": "en"
+                }
+              ],
+              "description": [
+                {
+                  "value": "Denne avgangen kjører dessverre med 3 vogner i stedet for 6 vogner. Dette skyldes at vi mangler et togsett.",
+                  "language": "no"
+                },
+                {
+                  "value": "Unfortunately, this departure runs with 3 carriages instead of 6 carriages. This is because we are a train set short.",
+                  "language": "en"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:49:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:43+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "5"
+          },
+          "destinationDisplay": {
+            "frontText": "Drammen"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1610_443230-R",
+            "line": {
+              "publicCode": "R13",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "13"
+          },
+          "destinationDisplay": {
+            "frontText": "Moss"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1111-HVK_876304-R",
+            "line": {
+              "publicCode": "R21",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:56:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:56:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "9"
+          },
+          "destinationDisplay": {
+            "frontText": "Lillestrøm"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2112_443517-R",
+            "line": {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:50:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:56:37+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "14"
+          },
+          "destinationDisplay": {
+            "frontText": "Oslo Lufthavn"
+          },
+          "serviceJourney": {
+            "id": "FLT:ServiceJourney:1-2614-3895-20261022",
+            "line": {
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:57:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:57:50+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "8"
+          },
+          "destinationDisplay": {
+            "frontText": "Asker"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2111_443516-R",
+            "line": {
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          },
+          "situations": [
+            {
+              "id": "UHRTaXR1YXRpb25FbGVtZW50Ok5TQjpTaXR1YXRpb25OdW1iZXI6ZjEzYzA3ODAtZTI1YS00OGE5LWJjNjUtYTA3MWQzNDg3ZTQ1",
+              "summary": [
+                {
+                  "value": "Færre vogner",
+                  "language": "no"
+                },
+                {
+                  "value": "Fewer carriages",
+                  "language": "en"
+                }
+              ],
+              "description": [
+                {
+                  "value": "Denne avgangen kjører dessverre med 4 vogner i stedet for 8 vogner. Dette skyldes at vi mangler et togsett.",
+                  "language": "no"
+                },
+                {
+                  "value": "Unfortunately, this departure runs with 4 carriages instead of 8 carriages. This is because we are a train set short.",
+                  "language": "en"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:00:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:00:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "13"
+          },
+          "destinationDisplay": {
+            "frontText": "Oslo Lufthavn"
+          },
+          "serviceJourney": {
+            "id": "FLT:ServiceJourney:1-2614-3721-20261022",
+            "line": {
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:00:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:00:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "16"
+          },
+          "destinationDisplay": {
+            "frontText": "Rakkestad"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1907_443443-R",
+            "line": {
+              "publicCode": "R22",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:00:24+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "11"
+          },
+          "destinationDisplay": {
+            "frontText": "Eidsvoll"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:506_906233-R",
+            "line": {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:01:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:01:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "7"
+          },
+          "destinationDisplay": {
+            "frontText": "Lysaker"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2814-SKI_753159-R",
+            "line": {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:01:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:01:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "10"
+          },
+          "destinationDisplay": {
+            "frontText": "Ski"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:2811-HVK_444023-R",
+            "line": {
+              "publicCode": "L2",
+              "transportMode": "rail"
+            }
+          },
+          "situations": [
+            {
+              "id": "UHRTaXR1YXRpb25FbGVtZW50Ok5TQjpTaXR1YXRpb25OdW1iZXI6OTE4MDc4MTctZGNjZS00ZGZjLTkwZGMtNWYyNDZiMmY0NjY2",
+              "summary": [
+                {
+                  "value": "Færre vogner",
+                  "language": "no"
+                },
+                {
+                  "value": "Fewer carriages",
+                  "language": "en"
+                }
+              ],
+              "description": [
+                {
+                  "value": "Denne avgangen kjører dessverre med 3 vogner i stedet for 6 vogner. Dette skyldes at vi mangler et togsett.",
+                  "language": "no"
+                },
+                {
+                  "value": "Unfortunately, this departure runs with 3 carriages instead of 6 carriages. This is because we are a train set short.",
+                  "language": "en"
+                }
+              ]
+            },
+            {
+              "id": "UHRTaXR1YXRpb25FbGVtZW50Ok5TQjpTaXR1YXRpb25OdW1iZXI6ZGU3YjAyNDEtYjUxNi00MGNlLThmNDQtNDFmYTVjYzQ2NGI4",
+              "summary": [
+                {
+                  "value": "Færre vogner",
+                  "language": "no"
+                },
+                {
+                  "value": "Fewer carriages",
+                  "language": "en"
+                }
+              ],
+              "description": [
+                {
+                  "value": "Denne avgangen kjører dessverre med 3 vogner i stedet for 6 vogner. Dette skyldes at vi mangler et togsett.",
+                  "language": "no"
+                },
+                {
+                  "value": "Unfortunately, this departure runs with 3 carriages instead of 6 carriages. This is because we are a train set short.",
+                  "language": "en"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:02:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:02:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "15"
+          },
+          "destinationDisplay": {
+            "frontText": "Trondheim S"
+          },
+          "serviceJourney": {
+            "id": "SJN:ServiceJourney:43-LOD_30155-R",
+            "line": {
+              "publicCode": "F6",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:59:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:02:31+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "5"
+          },
+          "destinationDisplay": {
+            "frontText": "Asker"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1006_913553-R",
+            "line": {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:04:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:04:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "6"
+          },
+          "destinationDisplay": {
+            "frontText": "Gjøvik"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1207_443096-R",
+            "line": {
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:04:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:04:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "11"
+          },
+          "destinationDisplay": {
+            "frontText": "Kongsvinger"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1007_442912-R",
+            "line": {
+              "publicCode": "R14",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:06:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:06:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "17"
+          },
+          "destinationDisplay": {
+            "frontText": "Ski"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:1513_443157-R",
+            "line": {
+              "publicCode": "R23",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T08:09:00+02:00",
+          "expectedDepartureTime": "2026-10-22T08:09:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "5"
+          },
+          "destinationDisplay": {
+            "frontText": "Kongsberg"
+          },
+          "serviceJourney": {
+            "id": "VYG:ServiceJourney:507_906236-R",
+            "line": {
+              "publicCode": "R12",
+              "transportMode": "rail"
+            }
+          },
+          "situations": []
+        }
+      ]
+    },
+    "s1": {
+      "id": "NSR:StopPlace:58366",
+      "name": "Jernbanetorget",
+      "estimatedCalls": [
+        {
+          "aimedDepartureTime": "2026-10-22T07:45:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:45:38+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Vestli via Majorstuen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:0799f08894a474f7fe9a80f709472a16",
+            "line": {
+              "publicCode": "4",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:45:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:45:40+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Tonsenhagen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:0a7074e8eac35dcfb11e513a33c9c5a9",
+            "line": {
+              "publicCode": "31",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:44:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:45:58+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "P"
+          },
+          "destinationDisplay": {
+            "frontText": "Bygdøy via Bygdøynes"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:87f54762349e2e48d945d87bf17f339d",
+            "line": {
+              "publicCode": "30",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:43:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:46:15+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "P"
+          },
+          "destinationDisplay": {
+            "frontText": "Filipstad"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:b3f2f90130c347e2f06c68b9dd5609ba",
+            "line": {
+              "publicCode": "81",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:42:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:46:22+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Jernbanetorget"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:8ce1dff8aca55da8fb8bc2201f146caa",
+            "line": {
+              "publicCode": "74",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:41:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:46:22+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "N"
+          },
+          "destinationDisplay": {
+            "frontText": "Myrvoll stasjon"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:19fdd565c2b0c361c04987b17c853f98",
+            "line": {
+              "publicCode": "81",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:45:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:46:32+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "1"
+          },
+          "destinationDisplay": {
+            "frontText": "Mortensrud"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:b9558815d06cbff32d2ac29fa1305327",
+            "line": {
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:44:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:47:03+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "C"
+          },
+          "destinationDisplay": {
+            "frontText": "Majorstuen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:04bc36d9f0ba50d25212efc7668e66b4",
+            "line": {
+              "publicCode": "19",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:45:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:47:42+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "E"
+          },
+          "destinationDisplay": {
+            "frontText": "Storo-Grefsen st."
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:499a44243ffe9cb196336a830f5d427d",
+            "line": {
+              "publicCode": "18",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:44:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:47:50+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Kværnerbyen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:a4847513d61055a8f8dc1645d687f6fb",
+            "line": {
+              "publicCode": "54",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:44:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:48:11+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Kjelsås stasjon"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:08e10272f1ffca6173bc17b2c3906f93",
+            "line": {
+              "publicCode": "54",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:46:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:48:14+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Nydalen T"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:47fbdb8531d27d6ca4c1a1fe00292d24",
+            "line": {
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:47:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:48:18+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "1"
+          },
+          "destinationDisplay": {
+            "frontText": "Vestli"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:5ffe6bd0b2399c59359b38cce3f50896",
+            "line": {
+              "publicCode": "5",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:49:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:12+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Stortinget"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:aec863a51255d69ccc16d50d68557fb6",
+            "line": {
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:49:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:39+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "F"
+          },
+          "destinationDisplay": {
+            "frontText": "Gaustadalléen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:e32fef450203f1a9d20b19e2e92a8510",
+            "line": {
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:48:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:42+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "G"
+          },
+          "destinationDisplay": {
+            "frontText": "Tåsen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:cf8df18910c05995d18a4d4074a573a7",
+            "line": {
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:48:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:50+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "H"
+          },
+          "destinationDisplay": {
+            "frontText": "Ekeberg hageby"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:d04e6fb1a1659e47b175bf48bf6fc299",
+            "line": {
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:47:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:58+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Helsfyr"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:2016cb464ff540d854c43c4fb4c51354",
+            "line": {
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:47:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:49:59+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Vippetangen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:efbb11c85441f1f33b75c2203322d3aa",
+            "line": {
+              "publicCode": "60",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:50:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:50:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "L"
+          },
+          "destinationDisplay": {
+            "frontText": "Mortensrud"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:184771fb929e921064b8298d6e5b5519",
+            "line": {
+              "publicCode": "74",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:50:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:50:17+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Sognsvann"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:95c9db50c3e5233b73d3bf41a2f21f73",
+            "line": {
+              "publicCode": "5",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:48:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:50:24+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Østerås"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:66e5844cddfa4e55d60ee57cdb24adeb",
+            "line": {
+              "publicCode": "2",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:47:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:50:31+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "B"
+          },
+          "destinationDisplay": {
+            "frontText": "Majorstuen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:4cb8bb2987f500b17e33ecdf53c18663",
+            "line": {
+              "publicCode": "15",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:49:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:50:31+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "1"
+          },
+          "destinationDisplay": {
+            "frontText": "Bergkrystallen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:9d9d0f38a53a2038299209bf45a52548",
+            "line": {
+              "publicCode": "1",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:49:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:50:32+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "B"
+          },
+          "destinationDisplay": {
+            "frontText": "Ljabru"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:d88cc3bc6488afc1afab46fb7788e8c6",
+            "line": {
+              "publicCode": "19",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Mortensrud"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:184771fb929e921064b8298d6e5b5519",
+            "line": {
+              "publicCode": "74",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:50:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:51:19+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "E"
+          },
+          "destinationDisplay": {
+            "frontText": "Sinsen-Grefsen st."
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:bfdd79652fc77ff7d07db2e721e5870f",
+            "line": {
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:50:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:51:26+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Kjelsås stasjon"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:c7cffe01dbf890adb77bf9299c2ecd83",
+            "line": {
+              "publicCode": "54",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:51:46+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "B"
+          },
+          "destinationDisplay": {
+            "frontText": "Majorstuen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:99520f1164189901168c77d30f666b66",
+            "line": {
+              "publicCode": "12",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "N"
+          },
+          "destinationDisplay": {
+            "frontText": "Nydalen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:36f963e624a76d0e7abae1e37a2bf047",
+            "line": {
+              "publicCode": "30",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:01+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Grorud T"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:a9f94faea698d8a06a0aa0473dba6667",
+            "line": {
+              "publicCode": "31",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:48:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:18+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "C"
+          },
+          "destinationDisplay": {
+            "frontText": "Kjelsås"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:636152b78dee31140733718bce2223bd",
+            "line": {
+              "publicCode": "12",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:21+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "1"
+          },
+          "destinationDisplay": {
+            "frontText": "Ellingsrudåsen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:8e2b041faa6b7fb10b29dcefe8a6dee0",
+            "line": {
+              "publicCode": "2",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:39+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Nydalen T"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:76c9656ee7173e3fa7e4cdbbceee8ce1",
+            "line": {
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:52:51+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Frognerseteren"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:1db1434b45290e1bcc762f0619e19057",
+            "line": {
+              "publicCode": "1",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:53:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Tonsenhagen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:6a1d3e00a647dc6d05f6a7d37433c98e",
+            "line": {
+              "publicCode": "60",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:02+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "C"
+          },
+          "destinationDisplay": {
+            "frontText": "Kjelsås"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:1c428362b7810c7461b7b3ea92bc3625",
+            "line": {
+              "publicCode": "15",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:49:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:19+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Jernbanetorget"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:feb3e29b80c85a24f43e853078913c5d",
+            "line": {
+              "publicCode": "74",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:46:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:44+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Fornebu"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:79c1af1e098a172af43800bbdd8465b3",
+            "line": {
+              "publicCode": "31",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:50+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "N"
+          },
+          "destinationDisplay": {
+            "frontText": "Myrvoll stasjon"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:2baa793ba8bf2ebaf14b6c51fa49920b",
+            "line": {
+              "publicCode": "81",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:51+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Fornebu"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:d75b8be3fbac0fc6e7f9dc4951f5a3ac",
+            "line": {
+              "publicCode": "31E",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:53+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "1"
+          },
+          "destinationDisplay": {
+            "frontText": "Ringen via Tøyen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:9e91a8a11ae38e4b778867a1333b9438",
+            "line": {
+              "publicCode": "5",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:53:58+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Snarøya"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:cf5e0ebae9d38d466ca8d10a8908eee1",
+            "line": {
+              "publicCode": "31",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "1"
+          },
+          "destinationDisplay": {
+            "frontText": "Mortensrud"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:d5963b00fc2998754fe2b3c2dc4c53fa",
+            "line": {
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:54:11+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "P"
+          },
+          "destinationDisplay": {
+            "frontText": "Bygdøy via Bygdøynes"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:9ae2f410548cbedd738f9028dfaa914c",
+            "line": {
+              "publicCode": "30",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:51:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:54:26+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Kværnerbyen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:71d342ac09e8c01d6afc78d8d96d97b4",
+            "line": {
+              "publicCode": "54",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:48:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:54:53+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "P"
+          },
+          "destinationDisplay": {
+            "frontText": "Fornebu"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:fe822a4ca3bc0fe880686a3b74506b19",
+            "line": {
+              "publicCode": "81",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:55:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:55:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Østerås"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:d2f914f8769dcf52cabac19fb2a01b0d",
+            "line": {
+              "publicCode": "2",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:55:27+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "G"
+          },
+          "destinationDisplay": {
+            "frontText": "Tåsen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:81139ff8fbe35b9f6f4aa8fdd62b6647",
+            "line": {
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:55:28+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "H"
+          },
+          "destinationDisplay": {
+            "frontText": "Ekeberg hageby"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:983217815b1b42d483f33e3cf6a70442",
+            "line": {
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:55:59+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "F"
+          },
+          "destinationDisplay": {
+            "frontText": "Gaustadalléen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:843ca58705fcbd33417c52cfcf6971d8",
+            "line": {
+              "publicCode": "18",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:56:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:56:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Kjelsås stasjon"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:6d1415828a0eaf96a7c602aac7341ba2",
+            "line": {
+              "publicCode": "54",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:56:22+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "2"
+          },
+          "destinationDisplay": {
+            "frontText": "Ringen via Majorstuen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:5c066c2ac0468af35d21e8cbb9a29174",
+            "line": {
+              "publicCode": "5",
+              "transportMode": "metro"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:56:30+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "C"
+          },
+          "destinationDisplay": {
+            "frontText": "Majorstuen"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:e7a2178c3b8e04557218b2e76885e386",
+            "line": {
+              "publicCode": "19",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:52:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:56:44+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "D"
+          },
+          "destinationDisplay": {
+            "frontText": "Helsfyr"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:56172630054d66a6c7be247126c071f6",
+            "line": {
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:57:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:57:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "L"
+          },
+          "destinationDisplay": {
+            "frontText": "Mortensrud"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:b6455dedda1291e32ccc573a057b6ae2",
+            "line": {
+              "publicCode": "74",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:57:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:57:00+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "N"
+          },
+          "destinationDisplay": {
+            "frontText": "Skullerud"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:1ba7c85430eb4218f92157db6e3f54c0",
+            "line": {
+              "publicCode": "70",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:55:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:57:14+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "E"
+          },
+          "destinationDisplay": {
+            "frontText": "Storo-Grefsen st."
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:720cc2ad695af95d6c0cf91f0375f752",
+            "line": {
+              "publicCode": "18",
+              "transportMode": "tram"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:54:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:57:33+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "P"
+          },
+          "destinationDisplay": {
+            "frontText": "Nationaltheateret"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:a222b75ddfd1bc0043c4d93ca9ddcbe7",
+            "line": {
+              "publicCode": "70E",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        },
+        {
+          "aimedDepartureTime": "2026-10-22T07:56:00+02:00",
+          "expectedDepartureTime": "2026-10-22T07:57:45+02:00",
+          "cancellation": false,
+          "realtime": true,
+          "quay": {
+            "publicCode": "A"
+          },
+          "destinationDisplay": {
+            "frontText": "Nydalen T"
+          },
+          "serviceJourney": {
+            "id": "RUT:ServiceJourney:55890366e0dce88feba047c3def63f67",
+            "line": {
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          },
+          "situations": []
+        }
+      ]
+    }
+  }
+}

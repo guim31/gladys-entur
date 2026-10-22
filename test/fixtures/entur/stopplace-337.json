@@ -1,0 +1,752 @@
+{
+  "data": {
+    "stopPlace": {
+      "id": "NSR:StopPlace:337",
+      "name": "Oslo S",
+      "transportMode": ["rail"],
+      "quays": [
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:L2x",
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "SJN:Line:21",
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX20",
+              "publicCode": "RX20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F1",
+              "publicCode": "F1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:R12",
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L1",
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE11",
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R13",
+              "publicCode": "R13",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "SJN:Line:21",
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2x",
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F4",
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F1",
+              "publicCode": "F1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "SJV:Line:cfac9102-49ef-476c-8663-a6d468ee4f36",
+              "publicCode": "70",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY2",
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:L1",
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "SNT:Line:15931205-7b69-51de-bac7-18d4acc5c6f5",
+              "publicCode": "IC",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23x",
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX20",
+              "publicCode": "RX20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "id": "GOA:Line:50",
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F4",
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23x",
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:R13",
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "id": "SJN:Line:21",
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L1",
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F1",
+              "publicCode": "F1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "GOA:Line:50",
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R13x",
+              "publicCode": "R13x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE11",
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F4",
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23x",
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:L1",
+              "publicCode": "L1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2x",
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY2",
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY1",
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R12",
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:RE30",
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F1",
+              "publicCode": "F1",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "id": "SJN:Line:21",
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F4",
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "GOA:Line:50",
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "SNT:Line:15931205-7b69-51de-bac7-18d4acc5c6f5",
+              "publicCode": "IC",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2x",
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX20",
+              "publicCode": "RX20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23x",
+              "publicCode": "R23x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L2x",
+              "publicCode": "L2x",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R22",
+              "publicCode": "R22",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY2",
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY1",
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "GOA:Line:50",
+              "publicCode": "F5",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R23",
+              "publicCode": "R23",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F4",
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R13",
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R12",
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE20",
+              "publicCode": "RE20",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:R31",
+              "publicCode": "R31",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE30",
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY2",
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:R12",
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE11",
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R13",
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "FLT:Line:FLY2",
+              "publicCode": "FLY2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "FLT:Line:FLY1",
+              "publicCode": "FLY1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R12",
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R14",
+              "publicCode": "R14",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE11",
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R13",
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:RE10",
+              "publicCode": "RE10",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE30",
+              "publicCode": "RE30",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R31",
+              "publicCode": "R31",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R12",
+              "publicCode": "R12",
+              "transportMode": "rail"
+            },
+            {
+              "id": "SJN:Line:21",
+              "publicCode": "F6",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:F4",
+              "publicCode": "F4",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RE11",
+              "publicCode": "RE11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:RX11",
+              "publicCode": "RX11",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R13",
+              "publicCode": "R13",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L1",
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "VYG:Line:L2",
+              "publicCode": "L2",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:R21",
+              "publicCode": "R21",
+              "transportMode": "rail"
+            },
+            {
+              "id": "VYG:Line:L1",
+              "publicCode": "L1",
+              "transportMode": "rail"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

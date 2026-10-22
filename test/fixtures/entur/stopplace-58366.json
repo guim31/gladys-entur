@@ -1,0 +1,506 @@
+{
+  "data": {
+    "stopPlace": {
+      "id": "NSR:StopPlace:58366",
+      "name": "Jernbanetorget",
+      "transportMode": ["bus", "tram", "metro"],
+      "quays": [
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:18",
+              "publicCode": "18",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:17",
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:18",
+              "publicCode": "18",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:17",
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:19",
+              "publicCode": "19",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:15",
+              "publicCode": "15",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:12",
+              "publicCode": "12",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:17",
+              "publicCode": "17",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:19",
+              "publicCode": "19",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:15",
+              "publicCode": "15",
+              "transportMode": "tram"
+            },
+            {
+              "id": "RUT:Line:12",
+              "publicCode": "12",
+              "transportMode": "tram"
+            }
+          ]
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:3911",
+              "publicCode": "11N",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:3911",
+              "publicCode": "11N",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:74",
+              "publicCode": "74",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:4074",
+              "publicCode": "74B",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:54",
+              "publicCode": "54",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:9842",
+              "publicCode": "42N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:4031",
+              "publicCode": "31B",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3912",
+              "publicCode": "12N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:37",
+              "publicCode": "37",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:31",
+              "publicCode": "31",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:2031",
+              "publicCode": "31E",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3905",
+              "publicCode": "5N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3904",
+              "publicCode": "4N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:60",
+              "publicCode": "60",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3903",
+              "publicCode": "3N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3970",
+              "publicCode": "70N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3919",
+              "publicCode": "19N",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:31",
+              "publicCode": "31",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:54",
+              "publicCode": "54",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3905",
+              "publicCode": "5N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:74",
+              "publicCode": "74",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:9842",
+              "publicCode": "42N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:4074",
+              "publicCode": "74B",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:60",
+              "publicCode": "60",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:4031",
+              "publicCode": "31B",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3919",
+              "publicCode": "19N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3912",
+              "publicCode": "12N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:2031",
+              "publicCode": "31E",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:37",
+              "publicCode": "37",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:74",
+              "publicCode": "74",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:4074",
+              "publicCode": "74B",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:9931",
+              "publicCode": "31X",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": []
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:3902",
+              "publicCode": "2N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "NBU:Line:a7c15243-8873-4aee-a8b4-8d22e8ad31dc",
+              "publicCode": "FB5",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3901",
+              "publicCode": "1N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3903",
+              "publicCode": "3N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3970",
+              "publicCode": "70N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3904",
+              "publicCode": "4N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:34",
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:3902",
+              "publicCode": "2N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3901",
+              "publicCode": "1N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "NBU:Line:a7c15243-8873-4aee-a8b4-8d22e8ad31dc",
+              "publicCode": "FB5",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:34",
+              "publicCode": "34",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:4071",
+              "publicCode": "71B",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:84",
+              "publicCode": "84E",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:85",
+              "publicCode": "85",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:71",
+              "publicCode": "71",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:4",
+              "publicCode": "4",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:2",
+              "publicCode": "2",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:5",
+              "publicCode": "5",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:1",
+              "publicCode": "1",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:3",
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:5",
+              "publicCode": "5",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:1",
+              "publicCode": "1",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:4",
+              "publicCode": "4",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:2",
+              "publicCode": "2",
+              "transportMode": "metro"
+            },
+            {
+              "id": "RUT:Line:3",
+              "publicCode": "3",
+              "transportMode": "metro"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:3981",
+              "publicCode": "81N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:30",
+              "publicCode": "30",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3969",
+              "publicCode": "70E",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3983",
+              "publicCode": "83N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:70",
+              "publicCode": "70",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:81",
+              "publicCode": "81",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": [
+            {
+              "id": "RUT:Line:30",
+              "publicCode": "30",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:70",
+              "publicCode": "70",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3983",
+              "publicCode": "83N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:81",
+              "publicCode": "81",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3981",
+              "publicCode": "81N",
+              "transportMode": "bus"
+            },
+            {
+              "id": "RUT:Line:3969",
+              "publicCode": "70E",
+              "transportMode": "bus"
+            }
+          ]
+        },
+        {
+          "lines": []
+        }
+      ]
+    }
+  }
+}

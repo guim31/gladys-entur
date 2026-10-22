@@ -1,67 +1,151 @@
-# Template de démonstration
+# Entur
 
-Ceci est la documentation utilisateur de l'intégration. Gladys ré-héberge ce
-fichier et affiche un lien **Documentation** permanent vers lui dans l'écran
-de configuration (dans la langue de l'utilisateur, avec l'anglais en repli) —
-c'est au moment de configurer que l'utilisateur en a le plus besoin. Gardez
-les courtes indications d'accueil dans les blocs `section` du `config_schema`
-du manifest ; mettez ici le pas-à-pas détaillé (captures d'écran, dépannage…).
+Les prochains départs de vos arrêts de transport en commun en Norvège dans Gladys : trains, métro,
+trams, bus, cars et ferries, avec retards, suppressions et messages de trafic, en temps réel.
+
+Les données viennent d'[Entur](https://entur.no), le registre national de tous les opérateurs de
+transport public norvégiens (Vy, Ruter, Skyss, AtB, Kolumbus…), par ses API ouvertes : **ni compte,
+ni clé**. Cette intégration n'est pas affiliée à Entur.
 
 ## Ce que vous obtenez
 
-Six appareils de démonstration apparaissent après l'installation : une
-station météo (vraies données Open-Meteo), un interrupteur, une lampe
-variable, une prise connectée avec mesure de puissance, un détecteur de
-mouvement et une caméra.
+- **Un appareil par arrêt suivi** (filtré si vous le voulez par lignes, direction ou mode de
+  transport) : prochain départ et départ suivant (minutes), retard du prochain départ (minutes), sa
+  ligne et sa destination (texte), et si un message de trafic touche ses départs (oui/non).
+- **Un widget de tableau de bord** avec les prochains départs d'un arrêt : heure, minutes, retard,
+  départs supprimés en rouge, messages de trafic en tête.
+- **Quatre déclencheurs de scène** : c'est l'heure de partir, départ en retard, départ supprimé,
+  nouvelle perturbation.
+- **Une action de scène** qui lit les prochains départs d'un arrêt, avec une phrase prête à envoyer
+  par message ou sur une enceinte.
+
+## Prérequis
+
+- Gladys Assistant 5.1.0 ou plus récent.
+- Un accès à Internet depuis la machine Gladys (l'intégration appelle `api.entur.io`).
+- Un arrêt en Norvège. Entur couvre tout le pays, pas les autres pays nordiques.
+
+## Installation
+
+1. Dans Gladys, ouvrez **Intégrations → Installer depuis GitHub**.
+2. Collez `https://github.com/guim31/gladys-entur` et installez.
+3. Ouvrez l'onglet **Configuration** de l'intégration.
 
 ## Configuration
 
-1. Ouvrez l'onglet **Configuration** de l'intégration.
-2. Renseignez la **latitude** et la **longitude** que la station météo de
-   démonstration doit observer (Paris par défaut), et choisissez votre unité
-   de température. L'**intervalle de rafraîchissement** règle la fréquence
-   de lecture de la station météo et de la puissance de la prise : toutes
-   les 5 minutes par défaut, toutes les minutes au plus.
-3. Enregistrez : les appareils apparaissent dans l'onglet **Découverte**,
-   prêts à être ajoutés.
+### Réglages
 
-Le réglage **Préférer la connexion locale** pilote la prise de
-démonstration : elle affiche en badge le canal réellement utilisé (local ou
-cloud), avec un point orange quand elle fonctionne en mode dégradé (local
-refusé, bascule cloud).
+- **Langue des textes** : langue des noms de fonctionnalités (fixés à la création de l'appareil),
+  des phrases des scènes et des messages de trafic quand Entur les publie dans cette langue. Entur
+  écrit ses messages en norvégien et souvent en anglais : un message sans la langue choisie
+  s'affiche en anglais, sinon en norvégien. Le norvégien n'est pas proposé comme langue d'interface.
+- **Fréquence de mise à jour** : 30 secondes, 1 minute (par défaut) ou 2 minutes. Tous les
+  appareils créés sont lus en une seule requête.
 
-## Actions
+### Ajouter un arrêt
 
-- **Tester le fournisseur météo** — effectue une requête en direct vers
-  Open-Meteo et affiche la température et l'humidité actuelles sous le
-  bouton.
-- **Identifier un appareil** — choisissez un de vos appareils dans la liste
-  et il se signale (la lampe de démonstration « clignote » dans les logs).
+1. **Chercher un arrêt** : saisissez un nom (`Jernbanetorget`, `Bergen busstasjon`…). La réponse
+   liste les arrêts trouvés avec leur identifiant, par exemple `NSR:StopPlace:58366`.
+2. **Ajouter un arrêt** : collez l'identifiant (ou le numéro seul, ou le nom exact s'il est unique).
+   Filtres facultatifs :
+   - **Lignes** : `L1, R13` ne garde que ces lignes (telles qu'écrites sur le véhicule).
+   - **Direction** : `Ski` ne garde que les départs dont la destination contient ce texte (accents et
+     majuscules ignorés, `lillestrom` trouve `Lillestrøm`).
+   - **Mode** : train, métro, tram, bus, car ou ferry, pour les grands pôles.
+3. Ouvrez l'onglet **Découverte** et ajoutez l'appareil à Gladys.
 
-## Scènes
+Le même arrêt avec d'autres filtres donne un autre appareil : ajoutez Oslo S direction Ski et Oslo S
+direction Drammen pour suivre les deux sens. Jusqu'à 20 arrêts peuvent être suivis.
 
-L'intégration ajoute ses propres cartes à l'éditeur de scènes (Gladys 5.1
-ou plus récent), dans la catégorie **Intégrations** :
+### Retirer un arrêt, vérifier l'état
 
-- **Mouvement détecté** (déclencheur) — lance la scène quand un détecteur
-  de démonstration voit bouger quelque chose. Choisissez éventuellement le
-  détecteur et ce qui a bougé (personne, animal) ; laissés vides, toute
-  détection correspond. Les actions suivantes peuvent lire ce qui a bougé
-  avec `{{triggerEvent.data.target}}`.
-- **Identifier un appareil** (action) — fait se signaler l'appareil choisi.
-  Elle indique si l'appareil a pu se signaler, pour que les actions
-  suivantes puissent en dépendre.
+- **Retirer un arrêt** : saisissez son nom tel qu'affiché par l'état (`Oslo S (L1)`) ou son
+  identifiant. Son appareil reste dans Gladys jusqu'à ce que vous le supprimiez.
+- **Voir ce qui est suivi** : les arrêts, l'existence de leur appareil, la dernière lecture d'Entur
+  et la dernière erreur.
 
-## Tableau de bord
+## Appareils
 
-Ajoutez le widget **État de la démo** à un tableau de bord : il affiche en
-direct la température de la station météo et la puissance de la prise du
-bureau, la connexion utilisée par la prise (en orange si dégradée) et la
-position observée. Son bouton **Identifier la lampe** fait se signaler la
-lampe de démonstration.
+| Fonctionnalité       | Type              | Contenu                                                         |
+| -------------------- | ----------------- | --------------------------------------------------------------- |
+| Prochain départ      | durée (min)       | minutes avant le prochain départ maintenu (0 = part maintenant) |
+| Départ suivant       | durée (min)       | minutes avant le suivant                                        |
+| Retard               | durée (min)       | retard du prochain départ (0 à l'heure ou en avance)            |
+| Ligne et destination | texte             | `L1 → Spikkestad`                                               |
+| Perturbation         | binaire (oui/non) | un message de trafic touche les départs de l'appareil           |
+
+Les départs supprimés sont sautés par les comptes à rebours. Sans départ dans les 24 heures, les
+comptes à rebours affichent 1440 minutes. Seuls les départs gardés par les filtres comptent.
+
+## Widget de tableau de bord
+
+**Prochains départs** : choisissez un arrêt. Le widget affiche ses huit prochains départs (ligne,
+destination, heure estimée, minutes, retard) : en vert quand le véhicule est suivi en temps réel, en
+orange à partir de deux minutes de retard, en rouge s'il est supprimé, en gris pour un horaire
+théorique. La légende affiche les messages de trafic de l'arrêt.
+
+## Déclencheurs de scène
+
+Chaque déclencheur peut être limité à un arrêt et à une ligne (telle qu'écrite sur le véhicule, en
+majuscules).
+
+- **C'est l'heure de partir** : un départ part dans le nombre de minutes choisi (1 à 20). Une fois
+  par départ, quand son compte à rebours atteint ce nombre. Un départ vu pour la première fois déjà
+  dans la fenêtre ne déclenche pas.
+- **Départ en retard** : un départ a au moins le retard choisi (1 à 60 minutes). Une fois par départ
+  et par seuil.
+- **Départ supprimé** : un départ est supprimé. Une fois par départ.
+- **Nouvelle perturbation** : un nouveau message de trafic touche les départs d'un arrêt. Une fois
+  par message.
+
+Variables transmises à la scène : arrêt, ligne, mode, destination, quai, heures prévue et estimée,
+minutes, retard ; pour une perturbation, son résumé et ses détails. Ce qui existe déjà au démarrage
+de l'intégration n'est pas annoncé ; les suppressions et messages déjà annoncés ne le sont pas de
+nouveau après un redémarrage.
+
+## Actions de scène
+
+**Lire les prochains départs Entur** : choisissez un arrêt, et si vous voulez une ligne. Sorties :
+une phrase (`Train L1 vers Spikkestad à Oslo S : dans 3 et 18 min`), l'arrêt, la ligne, la
+destination, les minutes à attendre, les minutes jusqu'au suivant, le retard, l'heure estimée, le
+quai, temps réel (1/0), perturbation (1/0). La phrase suit la langue de la configuration.
+
+## Exemples de scènes
+
+- **Partir pour le train** : déclencheur « C'est l'heure de partir », arrêt Oslo S (L1), 7 min →
+  envoyer « Ton L1 part dans {{minutes}} min, quai {{platform}} » et faire clignoter la lumière de
+  l'entrée.
+- **Point du matin** : à 7 h en semaine, action « Lire les prochains départs Entur » → envoyer sa
+  phrase sur l'enceinte de la cuisine.
+- **Prévenir d'un bus supprimé** : déclencheur « Départ supprimé », arrêt Jernbanetorget (31) →
+  envoyer un message avec la destination et l'heure prévue.
+
+## Données, fréquence et quotas
+
+Les API d'Entur sont gratuites et ouvertes (licence NLOD). Entur demande à chaque client de
+s'identifier : l'intégration envoie l'en-tête `ET-Client-Name: guim31-gladys` et lit tous vos arrêts
+en une seule requête, au plus toutes les 30 secondes, et seulement pour les appareils créés dans
+Gladys. Les données sont le temps réel des opérateurs quand ils le publient, sinon leurs horaires.
 
 ## Dépannage
 
-L'intégration journalise tout ce qu'elle fait : consultez les logs de
-l'intégration depuis l'interface Gladys (ou `docker logs` sur l'hôte) avec
-`LOG_LEVEL=debug` pour le détail complet.
+- **Aucun appareil dans Découverte** : ajoutez d'abord l'arrêt avec « Ajouter un arrêt ».
+- **« Entur est injoignable »** : la machine Gladys n'a pas accès à Internet, ou Entur est en panne.
+  L'intégration réessaie à chaque mise à jour et signale le retour.
+- **Un filtre de ligne est refusé** : la réponse liste les lignes qui desservent l'arrêt ; saisissez
+  la ligne telle qu'elle y est écrite.
+- **Un déclencheur ne se déclenche pas** : vérifiez la ligne (exacte, en majuscules) et que
+  l'appareil existe dans Gladys : seuls les appareils créés sont lus.
+
+## Limites
+
+- Développée sans vivre en Norvège, contre la vraie API d'Entur : vos retours sont les bienvenus.
+- Les noms de fonctionnalités sont fixés à la création de l'appareil.
+- Les messages de trafic sont en norvégien et souvent en anglais, jamais traduits.
+- Les départs sont lus sur les 24 prochaines heures : les 40 prochains des lignes et du mode choisis (filtrés par Entur), 100 avec un filtre de direction. Dans un grand pôle sans filtre, 40 départs peuvent ne couvrir qu'une demi-heure.
+
+## Crédits
+
+Données : [Entur](https://developer.entur.org), licence NLOD. Inspirée de l'intégration Home
+Assistant `entur_public_transport` (Apache 2.0) et des intégrations `gladys-tisseo` et
+`gladys-gtfs`.

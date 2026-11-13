@@ -1,6 +1,6 @@
 {
   "name": "gladys-entur",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Entur (Norway public transport) departures, delays, cancellations and disruptions in Gladys Assistant.",
   "type": "module",

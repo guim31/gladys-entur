@@ -20,7 +20,7 @@ no key**. This integration is not affiliated with Entur.
 
 ## Requirements
 
-- Gladys Assistant 5.1.0 or later.
+- Gladys Assistant 5.3.0 or later.
 - Internet access from the Gladys host (the integration calls `api.entur.io`).
 - A stop in Norway. Entur covers the whole country; it does not cover the other Nordic countries.
 

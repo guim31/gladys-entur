@@ -22,7 +22,7 @@ cuenta ni clave**. Esta integración no está afiliada a Entur.
 
 ## Requisitos
 
-- Gladys Assistant 5.1.0 o posterior.
+- Gladys Assistant 5.3.0 o posterior.
 - Acceso a Internet desde el equipo de Gladys (la integración llama a `api.entur.io`).
 - Una parada en Noruega. Entur cubre todo el país, no los demás países nórdicos.
 

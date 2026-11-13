@@ -23,7 +23,7 @@ The user documentation is in [`docs/en.md`](docs/en.md) ([fr](docs/fr.md), [de](
 
 ## Requirements
 
-- Gladys Assistant 5.1.0 or later, with internet access.
+- Gladys Assistant 5.3.0 or later, with internet access.
 - A stop in Norway (Entur covers every Norwegian operator: Vy, Ruter, Skyss, AtB, Kolumbus…).
 
 ## Installation
